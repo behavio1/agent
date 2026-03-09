@@ -1,0 +1,12 @@
+{
+  "name": "behavio1-agent-monorepo",
+  "private": true,
+  "workspaces": [
+    "projects/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w landing-smoke-1773023522",
+    "build": "npm run build -w landing-smoke-1773023522",
+    "start": "npm run start -w landing-smoke-1773023522"
+  }
+}
