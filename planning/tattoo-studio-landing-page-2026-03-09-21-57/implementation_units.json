@@ -1,0 +1,55 @@
+[
+  {
+    "id": "unit-1-setup-data",
+    "title": "Setup, Theming, and Static Data Layer",
+    "summary": "Configure Tailwind CSS dark theme, define typography, and create the static data definitions.",
+    "acceptanceCriteria": "Tailwind dark mode is active by default. Global CSS and custom fonts are applied. `lib/data.ts` contains typed placeholder data for all sections (artists, services, faqs, testimonials, etc.).",
+    "dependencies": [],
+    "estimatedComplexity": "low"
+  },
+  {
+    "id": "unit-2-layout-nav",
+    "title": "Core Layout and Navigation",
+    "summary": "Implement the responsive Navbar with smooth-scrolling anchor links and the site Footer.",
+    "acceptanceCriteria": "Navbar is sticky, responsive (mobile menu), and contains links that smoothly scroll to section IDs. Footer displays required links, social icons, and copyright.",
+    "dependencies": ["unit-1-setup-data"],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "unit-3-info-sections",
+    "title": "Informational Sections",
+    "summary": "Build the Hero, Services, and Studio Information sections including FAQs.",
+    "acceptanceCriteria": "Hero displays optimized background and CTA. Services list offerings and starting prices. Studio Info shows address, hours, and an accordion-based FAQ.",
+    "dependencies": ["unit-1-setup-data"],
+    "estimatedComplexity": "low"
+  },
+  {
+    "id": "unit-4-media-sections",
+    "title": "Media Sections (Artists, Portfolio, Testimonials)",
+    "summary": "Implement the Artists bio grid, Portfolio gallery with image modals, and Testimonials component.",
+    "acceptanceCriteria": "Artists are displayed in a responsive grid. Portfolio uses Next.js Image for optimization and opens larger images in a dialog/modal. Testimonials are visually distinct and readable on all screen sizes.",
+    "dependencies": ["unit-1-setup-data"],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "unit-5-contact-form",
+    "title": "Contact & Booking Form",
+    "summary": "Build the booking inquiry form and wire it to a Next.js Server Action.",
+    "acceptanceCriteria": "Form includes required fields (Name, Email, Phone, Artist, Description, Dates). Validates input on client. Server action receives payload, logs it, and returns success. UI shows success message upon submission.",
+    "dependencies": ["unit-1-setup-data"],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "unit-6-assembly-polish",
+    "title": "Assembly, SEO, and Polish",
+    "summary": "Compose the page, add SEO metadata, and optimize for Lighthouse targets.",
+    "acceptanceCriteria": "All components are integrated into `app/page.tsx`. `app/layout.tsx` includes proper SEO and Open Graph metadata. Application passes responsive checks and scores 90+ on Lighthouse (Performance, Accessibility, SEO).",
+    "dependencies": [
+      "unit-2-layout-nav",
+      "unit-3-info-sections",
+      "unit-4-media-sections",
+      "unit-5-contact-form"
+    ],
+    "estimatedComplexity": "low"
+  }
+]
