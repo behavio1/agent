@@ -12,7 +12,7 @@ import { TestimonialsSection } from "@/components/landing/testimonials-section";
 
 export default function HomePage() {
   return (
-    <main>
+    <main id="top">
       <SiteHeader />
       <HeroSection />
       <ServicesSection />

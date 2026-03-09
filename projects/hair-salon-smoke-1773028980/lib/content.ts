@@ -62,7 +62,7 @@ export type ContactField = {
 export const siteContent = {
   brand: {
     name: "Lumière Studio",
-    tagline: "Nowoczesny salon fryzjerski w centrum miasta"
+    tagline: "Butikowy salon fryzjerski w centrum Warszawy"
   },
   navigation: [
     { label: "Usługi", href: "#uslugi" },
@@ -76,14 +76,14 @@ export const siteContent = {
     eyebrow: "Nowoczesny salon fryzjerski w centrum miasta",
     title: "Piękne włosy, spokojna atmosfera i rezerwacja, do której chce się kliknąć.",
     description:
-      "Tworzymy dopracowane kolory, cięcia i stylizacje dla kobiet, które szukają jakości premium bez nadęcia. To kompletna, gotowa do uruchomienia strona landing page dla salonu fryzjerskiego z pełnym zestawem sekcji sprzedażowych.",
+      "Tworzymy dopracowane kolory, cięcia i stylizacje dla kobiet, które szukają jakości premium bez pośpiechu. Od pierwszej konsultacji po finalne wykończenie prowadzimy klientkę przez doświadczenie, które wygląda luksusowo i daje realny komfort noszenia na co dzień.",
     primaryCta: { label: "Zarezerwuj wizytę", href: "#kontakt" },
     secondaryCta: { label: "Zobacz cennik", href: "#cennik" },
     stats: [
       { value: "12+", label: "lat doświadczenia zespołu" },
       { value: "1 500+", label: "zadowolonych klientek rocznie" },
       { value: "4.9/5", label: "średnia ocen wizyt" },
-      { value: "7 dni", label: "odpowiedź na zapytania do 24h" }
+      { value: "24h", label: "średni czas odpowiedzi na zapytania" }
     ] satisfies StatItem[],
     availability: {
       eyebrow: "Najbliższe terminy",
