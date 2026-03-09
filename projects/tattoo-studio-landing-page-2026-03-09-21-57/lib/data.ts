@@ -9,7 +9,12 @@ export const studioInfo = {
     { days: "Sunday", time: "Closed" },
   ],
   mapLink: "https://maps.google.com/?q=123+Needle+St,+Arts+District,+NY+10001",
-  about: "Ink & Echo is a premium tattoo studio specializing in custom designs, blackwork, and fine line tattoos. We provide a clean, welcoming environment and work closely with our clients to bring their visions to life."
+  about: "Ink & Echo is a premium tattoo studio specializing in custom designs, blackwork, and fine line tattoos. We provide a clean, welcoming environment and work closely with our clients to bring their visions to life.",
+  socials: {
+    instagram: "https://instagram.com",
+    facebook: "https://facebook.com",
+    twitter: "https://twitter.com"
+  }
 };
 
 export const artists = [
