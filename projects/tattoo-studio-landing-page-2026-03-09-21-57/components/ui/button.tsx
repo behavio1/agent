@@ -59,7 +59,8 @@ function Button({
       data-variant={variant}
       data-size={size}
       className={cn(buttonVariants({ variant, size, className }))}
-      {...props}
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      {...(props as any)}
     />
   )
 }
