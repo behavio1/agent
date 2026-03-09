@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+  background-image:
+    radial-gradient(circle at top, rgba(244, 182, 194, 0.22), transparent 32%),
+    linear-gradient(180deg, #120b10 0%, #1a1016 45%, #120b10 100%);
+}
+
+::selection {
+  background: rgba(244, 182, 194, 0.35);
+}
+
+a:focus-visible,
+button:focus-visible {
+  @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-background;
+}
