@@ -1,0 +1,58 @@
+[
+  {
+    "id": "unit-1-foundation",
+    "title": "Project Foundation and Configuration",
+    "summary": "Setup custom dark theme in `globals.css`, configure fonts in `app/layout.tsx`, and scaffold the directory structure (`components/sections`, `components/ui`, `lib`).",
+    "acceptanceCriteria": "Tailwind configuration or globals.css includes a robust dark theme. Required directories (`components/sections`, `components/ui`, `lib`) exist. Custom font is loaded and applied in layout.",
+    "dependencies": [],
+    "estimatedComplexity": "Low"
+  },
+  {
+    "id": "unit-2-data-ui",
+    "title": "Data Model and Base UI Components",
+    "summary": "Create `lib/data.ts` with mock data for artists, portfolio items, and FAQs. Implement necessary UI components (Input, Textarea, Select, Accordion) in `components/ui/`.",
+    "acceptanceCriteria": "`lib/data.ts` exports structured mock data for artists, portfolio, and FAQs. Base UI components (Input, Textarea, Select, Accordion) are implemented and functional.",
+    "dependencies": ["unit-1-foundation"],
+    "estimatedComplexity": "Medium"
+  },
+  {
+    "id": "unit-3-layout",
+    "title": "Structural Layout Elements",
+    "summary": "Develop `Header.tsx` (sticky navigation with smooth scroll anchors and mobile menu) and `Footer.tsx`. Integrate them into `app/layout.tsx`.",
+    "acceptanceCriteria": "Header stays fixed at the top and mobile menu toggles correctly. Navigation links anchor to respective section IDs. Footer displays correctly with links. Both components are present in all page views.",
+    "dependencies": ["unit-2-data-ui"],
+    "estimatedComplexity": "Medium"
+  },
+  {
+    "id": "unit-4-static-sections",
+    "title": "Static Page Sections (Hero, About, Artists)",
+    "summary": "Implement `HeroSection.tsx`, `AboutSection.tsx`, and `ArtistsSection.tsx` with its sub-component `ArtistCard.tsx` using Next.js Image for optimization.",
+    "acceptanceCriteria": "Hero section displays background/overlay with CTA. About section displays formatted content. Artists section renders a grid of ArtistCards using data from `lib/data.ts` with correct mobile-first responsiveness.",
+    "dependencies": ["unit-3-layout"],
+    "estimatedComplexity": "Medium"
+  },
+  {
+    "id": "unit-5-interactive-sections",
+    "title": "Interactive Portfolio and FAQ Sections",
+    "summary": "Build `PortfolioSection.tsx` with category filtering and Framer Motion layout animations. Build `FAQSection.tsx` utilizing the Accordion component.",
+    "acceptanceCriteria": "Portfolio gallery filters images by style tag with smooth Framer Motion transitions. FAQ accordion items expand/collapse correctly. Images are optimized.",
+    "dependencies": ["unit-4-static-sections"],
+    "estimatedComplexity": "High"
+  },
+  {
+    "id": "unit-6-contact-section",
+    "title": "Contact Section and Booking Form",
+    "summary": "Implement `ContactSection.tsx` containing location info, a map placeholder, and a booking form with frontend validation.",
+    "acceptanceCriteria": "Form enforces required fields, validates format, and simulates submission by clearing fields and displaying a success message. Location details and map placeholder are rendered correctly.",
+    "dependencies": ["unit-4-static-sections"],
+    "estimatedComplexity": "Medium"
+  },
+  {
+    "id": "unit-7-assembly-polish",
+    "title": "Page Assembly and Final Polish",
+    "summary": "Assemble all sections in `app/page.tsx`. Apply Framer Motion scroll-reveal animations across sections. Verify accessibility (alt tags, keyboard nav) and responsiveness.",
+    "acceptanceCriteria": "All sections are assembled top-to-bottom in `page.tsx` with correct IDs for navigation. Scroll-reveal animations trigger on scroll. The site meets high Lighthouse scores for performance, accessibility, and best practices.",
+    "dependencies": ["unit-5-interactive-sections", "unit-6-contact-section"],
+    "estimatedComplexity": "Medium"
+  }
+]
