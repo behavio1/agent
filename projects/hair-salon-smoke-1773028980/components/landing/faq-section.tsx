@@ -16,6 +16,12 @@ export function FaqSection() {
           </SurfaceCard>
         ))}
       </div>
+      <div className="mt-8 flex flex-wrap items-center justify-between gap-4 rounded-[1.5rem] border border-white/10 bg-white/5 px-6 py-5 text-sm text-muted">
+        <p>Nie znalazłaś odpowiedzi? Przejdź do sekcji kontaktu i napisz, jakiej usługi szukasz.</p>
+        <a href="#kontakt" className="rounded-full bg-accent px-5 py-2.5 font-medium text-slate-950 transition hover:opacity-90">
+          Skontaktuj się z nami
+        </a>
+      </div>
     </SectionShell>
   );
 }

@@ -63,7 +63,9 @@ export type ContactDetail = {
 export type ContactField = {
   label: string;
   placeholder: string;
-  type?: "text" | "textarea";
+  name: string;
+  type?: "text" | "email" | "tel" | "textarea";
+  autoComplete?: string;
   rows?: number;
 };
 
@@ -78,6 +80,7 @@ export const siteContent = {
     { label: "Zespół", href: "#zespol" },
     { label: "Cennik", href: "#cennik" },
     { label: "Opinie", href: "#opinie" },
+    { label: "FAQ", href: "#faq" },
     { label: "Kontakt", href: "#kontakt" }
   ] satisfies NavItem[],
   hero: {
@@ -364,14 +367,32 @@ export const siteContent = {
     formDescription:
       "To statyczny formularz demonstracyjny gotowy do późniejszego podpięcia do backendu, CRM lub narzędzia do rezerwacji.",
     formFields: [
-      { label: "Imię i nazwisko", placeholder: "Np. Aleksandra Kowalska" },
-      { label: "Telefon lub email", placeholder: "Np. 500 000 000 lub email@adres.pl" },
-      { label: "Usługa", placeholder: "Np. balayage, strzyżenie, konsultacja" },
+      {
+        label: "Imię i nazwisko",
+        placeholder: "Np. Aleksandra Kowalska",
+        name: "fullName",
+        autoComplete: "name"
+      },
+      {
+        label: "Telefon lub email",
+        placeholder: "Np. 500 000 000 lub email@adres.pl",
+        name: "contact",
+        type: "tel",
+        autoComplete: "tel"
+      },
+      {
+        label: "Usługa",
+        placeholder: "Np. balayage, strzyżenie, konsultacja",
+        name: "service",
+        autoComplete: "off"
+      },
       {
         label: "Wiadomość",
         placeholder: "Napisz, jaki efekt chcesz uzyskać i kiedy pasuje Ci wizyta.",
+        name: "message",
         type: "textarea",
-        rows: 5
+        rows: 5,
+        autoComplete: "off"
       }
     ] satisfies ContactField[],
     submitLabel: "Wyślij zapytanie"
@@ -413,6 +434,11 @@ export const siteContent = {
       { label: "Cennik", href: "#cennik" },
       { label: "FAQ", href: "#faq" },
       { label: "Kontakt", href: "#kontakt" }
+    ] satisfies NavItem[],
+    utilityLinks: [
+      { label: "Zadzwoń", href: "tel:+48510240880" },
+      { label: "Napisz email", href: "mailto:rezerwacje@lumiere-studio.pl" },
+      { label: "Wróć na górę", href: "#top" }
     ] satisfies NavItem[]
   }
 } as const;
