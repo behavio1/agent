@@ -1,8 +1,27 @@
 {
-  "status": "success",
-  "projectPath": "projects/hair-salon-smoke-1773028284",
-  "appSlug": "hair-salon-smoke-1773028284",
-  "branch": "main",
-  "commit": "ae83cdd476e94c6f91ef28fc093490f5230c5629",
-  "summary": "Created and pushed a real Next.js hair salon landing page scaffold under projects/hair-salon-smoke-1773028284 with hero CTA, services, about, stylist team, pricing, testimonials, gallery, booking/contact, FAQ, footer, shared styling, workspace script updates, and a verified production build."
+  "status": "completed",
+  "step": "repo_setup",
+  "projectPath": "projects/hair-salon-smoke-1773028980",
+  "appSlug": "hair-salon-smoke-1773028980",
+  "summary": "Created a new Next.js App Router scaffold for the hair salon landing page, including app, components, Tailwind config, workspace wiring, and verified it builds successfully.",
+  "filesCreated": [
+    "projects/hair-salon-smoke-1773028980/README.md",
+    "projects/hair-salon-smoke-1773028980/app/globals.css",
+    "projects/hair-salon-smoke-1773028980/app/layout.tsx",
+    "projects/hair-salon-smoke-1773028980/app/page.tsx",
+    "projects/hair-salon-smoke-1773028980/components/section-heading.tsx",
+    "projects/hair-salon-smoke-1773028980/next-env.d.ts",
+    "projects/hair-salon-smoke-1773028980/next.config.mjs",
+    "projects/hair-salon-smoke-1773028980/package.json",
+    "projects/hair-salon-smoke-1773028980/postcss.config.js",
+    "projects/hair-salon-smoke-1773028980/tailwind.config.ts",
+    "projects/hair-salon-smoke-1773028980/tsconfig.json"
+  ],
+  "filesUpdated": [
+    "package.json",
+    "package-lock.json"
+  ],
+  "verification": {
+    "build": "npm run build -w hair-salon-smoke-1773028980"
+  }
 }
