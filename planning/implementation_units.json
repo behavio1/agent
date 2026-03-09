@@ -1,0 +1,59 @@
+[
+  {
+    "id": "unit-1-mock-data",
+    "title": "Setup Data Models and Mock Data",
+    "summary": "Create src/data/mockData.ts with TypeScript interfaces and mock data arrays for Services, Pricing, Team members, and Testimonials in Polish.",
+    "acceptanceCriteria": "- src/data/mockData.ts exists.\n- Interfaces Service, PricingItem, TeamMember, Testimonial are exported.\n- Mock data arrays contain at least 3 items each and use Polish text.",
+    "dependencies": [],
+    "estimatedComplexity": "low"
+  },
+  {
+    "id": "unit-2-layout-components",
+    "title": "Extract Layout Components (Navbar & Footer)",
+    "summary": "Create src/components/layout directory. Extract Navbar and Footer from the monolith page.tsx into their own components. Implement mobile drawer toggle for Navbar.",
+    "acceptanceCriteria": "- src/components/layout/Navbar.tsx and Footer.tsx exist.\n- Navbar contains links to page sections and a mobile menu toggle.\n- Components render correctly with Tailwind classes.",
+    "dependencies": [],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "unit-3-core-sections",
+    "title": "Extract Core Sections (Hero, Services, Pricing, Testimonials)",
+    "summary": "Create src/components/sections directory. Extract Hero, Services, Pricing, and Testimonials components. Wire them up to use the mock data from unit 1.",
+    "acceptanceCriteria": "- Hero, Services, Pricing, Testimonials components created.\n- Components map over mock data appropriately.\n- Hero contains a functional \"Book Now\" CTA (tel: or external link).\n- Section UIs match the relaxing spa theme.",
+    "dependencies": [
+      "unit-1-mock-data"
+    ],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "unit-4-about-team",
+    "title": "Implement About and Team Section",
+    "summary": "Extract and enhance the About section to include salon philosophy and team member qualifications using mock data.",
+    "acceptanceCriteria": "- src/components/sections/About.tsx is created.\n- Renders general about text in Polish.\n- Displays a grid/list of 2-3 team members with their roles and descriptions.",
+    "dependencies": [
+      "unit-1-mock-data"
+    ],
+    "estimatedComplexity": "low"
+  },
+  {
+    "id": "unit-5-contact-section",
+    "title": "Implement Contact Section with Form State",
+    "summary": "Extract Contact section. Display business hours, address, and an interactive contact form with a mock success state.",
+    "acceptanceCriteria": "- src/components/sections/Contact.tsx created.\n- Displays contact info and business hours.\n- Contact form handles submission locally (e.preventDefault) and shows a success/thank you message.\n- Contains a link or map placeholder for Google Maps.",
+    "dependencies": [],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "unit-6-page-integration",
+    "title": "Page Integration and Final Polish",
+    "summary": "Refactor src/app/page.tsx to import and compose all extracted layout and section components. Verify mobile responsiveness, scrolling, and language.",
+    "acceptanceCriteria": "- src/app/page.tsx is a clean composition of imported components.\n- Navigation links smoothly scroll to sections.\n- Fully responsive on mobile, tablet, desktop without horizontal scroll.\n- Passes npm run lint and npm run build.",
+    "dependencies": [
+      "unit-2-layout-components",
+      "unit-3-core-sections",
+      "unit-4-about-team",
+      "unit-5-contact-section"
+    ],
+    "estimatedComplexity": "low"
+  }
+]
