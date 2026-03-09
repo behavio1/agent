@@ -5,8 +5,8 @@
     "projects/*"
   ],
   "scripts": {
-    "dev": "npm run dev -w massage-salon-landing-page",
-    "build": "npm run build -w massage-salon-landing-page",
-    "start": "npm run start -w massage-salon-landing-page"
+    "dev": "npm run dev -ws",
+    "build": "npm run build -ws",
+    "start": "npm run start -ws"
   }
 }
