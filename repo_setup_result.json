@@ -11,7 +11,7 @@
   ],
   "verification": {
     "build": "npm run build -w hair-salon-smoke-1773032079",
-    "commit": "pending",
-    "push": "pending"
+    "commit": "96ef8c0",
+    "push": "git push origin main"
   }
 }
