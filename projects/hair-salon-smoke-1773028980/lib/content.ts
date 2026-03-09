@@ -19,22 +19,30 @@ export type Stylist = {
   role: string;
   bio: string;
   accent: string;
+  experience: string;
+  signature: string;
 };
 
 export type PriceItem = {
   service: string;
   price: string;
+  category: string;
+  duration: string;
 };
 
 export type Testimonial = {
   quote: string;
   author: string;
+  service: string;
+  rating: number;
 };
 
 export type GalleryItem = {
   title: string;
   description: string;
   accent: string;
+  tag: string;
+  height: string;
 };
 
 export type FaqItem = {
@@ -179,21 +187,27 @@ export const siteContent = {
         role: "Founder & Master Stylist",
         bio:
           "Specjalistka od nowoczesnych cięć i pracy z formą. Tworzy fryzury, które dobrze wyglądają także po wyjściu z salonu.",
-        accent: "from-rose-200/70 via-pink-200/35 to-fuchsia-800/60"
+        accent: "from-rose-200/70 via-pink-200/35 to-fuchsia-800/60",
+        experience: "12 lat doświadczenia w cięciach premium",
+        signature: "konsultacyjne cięcia dopasowane do rysów twarzy"
       },
       {
         name: "Klara Nowak",
         role: "Color Expert",
         bio:
           "Uwielbia miękkie przejścia, czyste blondy i odcienie dopasowane do karnacji oraz stylu klientki.",
-        accent: "from-amber-100/70 via-rose-100/35 to-orange-800/60"
+        accent: "from-amber-100/70 via-rose-100/35 to-orange-800/60",
+        experience: "8 lat pracy z koloryzacjami blond i glossingiem",
+        signature: "balayage, airtouch i odświeżenia koloru bez efektu ciężkości"
       },
       {
         name: "Zofia Lewandowska",
         role: "Styling & Care Specialist",
         bio:
           "Łączy pielęgnację z efektownym wykończeniem — od gładkich blowoutów po fryzury eventowe.",
-        accent: "from-stone-100/70 via-rose-100/30 to-rose-900/60"
+        accent: "from-stone-100/70 via-rose-100/30 to-rose-900/60",
+        experience: "7 lat doświadczenia w stylizacji i rytuałach regenerujących",
+        signature: "sesyjne blowouty, stylizacje ślubne i plan pielęgnacji domowej"
       }
     ] satisfies Stylist[]
   },
@@ -203,12 +217,42 @@ export const siteContent = {
     description:
       "Pokazujemy ceny startowe, bo finalna wycena zależy od długości, gęstości włosów i zakresu pracy. Dzięki temu strona jest konkretna, ale nadal realistyczna operacyjnie.",
     items: [
-      { service: "Strzyżenie damskie + modelowanie", price: "180 zł" },
-      { service: "Koloryzacja jednolita", price: "od 280 zł" },
-      { service: "Balayage / airtouch", price: "od 520 zł" },
-      { service: "Rytuał regenerujący", price: "od 140 zł" },
-      { service: "Blowout / modelowanie", price: "120 zł" },
-      { service: "Fryzura okolicznościowa", price: "od 220 zł" }
+      {
+        service: "Strzyżenie damskie + modelowanie",
+        price: "180 zł",
+        category: "Cięcie",
+        duration: "75 min"
+      },
+      {
+        service: "Koloryzacja jednolita",
+        price: "od 280 zł",
+        category: "Kolor",
+        duration: "150 min"
+      },
+      {
+        service: "Balayage / airtouch",
+        price: "od 520 zł",
+        category: "Kolor premium",
+        duration: "240 min"
+      },
+      {
+        service: "Rytuał regenerujący",
+        price: "od 140 zł",
+        category: "Care",
+        duration: "45 min"
+      },
+      {
+        service: "Blowout / modelowanie",
+        price: "120 zł",
+        category: "Styling",
+        duration: "45 min"
+      },
+      {
+        service: "Fryzura okolicznościowa",
+        price: "od 220 zł",
+        category: "Event",
+        duration: "90 min"
+      }
     ] satisfies PriceItem[],
     highlightsTitle: "Dlaczego klientki wybierają nas ponownie?",
     highlights: [
@@ -228,17 +272,30 @@ export const siteContent = {
       {
         quote:
           "Najpiękniejszy kolor, jaki miałam od lat. Efekt wygląda luksusowo, a włosy są miękkie i błyszczące.",
-        author: "Anna, klientka koloryzacji premium"
+        author: "Anna, klientka koloryzacji premium",
+        service: "Balayage + tonowanie",
+        rating: 5
       },
       {
         quote:
           "Salon jest przepiękny, a zespół słucha i proponuje rozwiązania, które naprawdę pasują do mnie.",
-        author: "Karolina, stała klientka"
+        author: "Karolina, stała klientka",
+        service: "Strzyżenie konsultacyjne",
+        rating: 5
       },
       {
         quote:
           "Przyszłam przed ważnym eventem i wyszłam z fryzurą, która trzymała się cały wieczór i wyglądała świetnie na zdjęciach.",
-        author: "Natalia, stylizacja okazjonalna"
+        author: "Natalia, stylizacja okazjonalna",
+        service: "Fryzura eventowa",
+        rating: 5
+      },
+      {
+        quote:
+          "Po raz pierwszy ktoś tak dokładnie wytłumaczył mi, jak dbać o włosy po rozjaśnianiu. Efekt jest piękny jeszcze długo po wizycie.",
+        author: "Magda, nowa klientka",
+        service: "Rozjaśnianie + rytuał care",
+        rating: 5
       }
     ] satisfies Testimonial[]
   },
@@ -251,32 +308,44 @@ export const siteContent = {
       {
         title: "Miękki balayage w odcieniach nude blond",
         description: "Inspiracja do zapisania wizyty i punkt odniesienia podczas konsultacji.",
-        accent: "from-rose-200/70 via-pink-200/35 to-fuchsia-900/60"
+        accent: "from-rose-200/70 via-pink-200/35 to-fuchsia-900/60",
+        tag: "Koloryzacja premium",
+        height: "lg:row-span-2"
       },
       {
         title: "Lśniący bob z subtelnym podbiciem objętości",
-        description: "Inspiracja do zapisania wizyty i punkt odniesienia podczas konsultacji.",
-        accent: "from-stone-100/70 via-amber-100/30 to-orange-900/60"
+        description: "Perfekcyjny przykład fryzury łatwej do codziennego stylizowania.",
+        accent: "from-stone-100/70 via-amber-100/30 to-orange-900/60",
+        tag: "Cięcie",
+        height: ""
       },
       {
         title: "Romantyczne fale na wieczorne wyjście",
-        description: "Inspiracja do zapisania wizyty i punkt odniesienia podczas konsultacji.",
-        accent: "from-zinc-100/70 via-rose-100/30 to-rose-950/60"
+        description: "Lekkość, objętość i miękki połysk gotowy na event oraz sesję zdjęciową.",
+        accent: "from-zinc-100/70 via-rose-100/30 to-rose-950/60",
+        tag: "Styling",
+        height: ""
       },
       {
         title: "Brunette gloss z efektem tafli",
-        description: "Inspiracja do zapisania wizyty i punkt odniesienia podczas konsultacji.",
-        accent: "from-rose-200/70 via-pink-200/35 to-fuchsia-900/60"
+        description: "Głęboki kolor, który wzmacnia połysk i wygląda elegancko w naturalnym świetle.",
+        accent: "from-rose-200/70 via-pink-200/35 to-fuchsia-900/60",
+        tag: "Glossing",
+        height: ""
       },
       {
         title: "Ślubne upięcie z delikatną teksturą",
-        description: "Inspiracja do zapisania wizyty i punkt odniesienia podczas konsultacji.",
-        accent: "from-stone-100/70 via-amber-100/30 to-orange-900/60"
+        description: "Portfolio dla klientek planujących ważny dzień i próbę stylizacji.",
+        accent: "from-stone-100/70 via-amber-100/30 to-orange-900/60",
+        tag: "Bridal",
+        height: "lg:row-span-2"
       },
       {
         title: "Naturalne cięcie warstwowe z ruchem",
-        description: "Inspiracja do zapisania wizyty i punkt odniesienia podczas konsultacji.",
-        accent: "from-zinc-100/70 via-rose-100/30 to-rose-950/60"
+        description: "Forma, która pracuje z włosami i zachowuje lekkość po wyjściu z salonu.",
+        accent: "from-zinc-100/70 via-rose-100/30 to-rose-950/60",
+        tag: "Shape",
+        height: ""
       }
     ] satisfies GalleryItem[]
   },
