@@ -10,9 +10,18 @@ export function FaqSection() {
       <SectionHeading eyebrow={faq.eyebrow} title={faq.title} description={faq.description} />
       <div className="mt-10 space-y-4">
         {faq.items.map((item) => (
-          <SurfaceCard key={item.question} className="rounded-[1.5rem]">
-            <h3 className="text-lg font-semibold text-white">{item.question}</h3>
-            <p className="mt-3 text-sm leading-7 text-muted">{item.answer}</p>
+          <SurfaceCard key={item.question} className="rounded-[1.5rem] p-0">
+            <details className="group rounded-[1.5rem] p-6" open>
+              <summary className="cursor-pointer list-none text-lg font-semibold text-white">
+                <span className="flex items-center justify-between gap-4">
+                  <span>{item.question}</span>
+                  <span aria-hidden="true" className="text-accent transition group-open:rotate-45">
+                    +
+                  </span>
+                </span>
+              </summary>
+              <p className="mt-3 pr-8 text-sm leading-7 text-muted">{item.answer}</p>
+            </details>
           </SurfaceCard>
         ))}
       </div>

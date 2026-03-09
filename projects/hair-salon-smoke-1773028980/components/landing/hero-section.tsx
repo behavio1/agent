@@ -5,12 +5,14 @@ export function HeroSection() {
   const trustPoints = ["Konsultacja przed usługą", "Formuły premium", "Spokojna atmosfera bez pośpiechu"];
 
   return (
-    <section className="mx-auto grid max-w-6xl gap-12 px-6 pb-20 pt-8 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:pb-28 lg:pt-12">
+    <section aria-labelledby="hero-title" className="mx-auto grid max-w-6xl gap-12 px-6 pb-20 pt-8 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:pb-28 lg:pt-12">
       <div>
         <div className="inline-flex items-center rounded-full border border-accent/25 bg-accent/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-accentSoft">
           {hero.eyebrow}
         </div>
-        <h1 className="mt-5 text-balance text-5xl font-semibold tracking-tight text-white sm:text-6xl">{hero.title}</h1>
+        <h1 id="hero-title" className="mt-5 text-balance text-5xl font-semibold tracking-tight text-white sm:text-6xl">
+          {hero.title}
+        </h1>
         <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">{hero.description}</p>
         <div className="mt-6 flex flex-wrap gap-3 text-sm text-muted">
           {trustPoints.map((point) => (

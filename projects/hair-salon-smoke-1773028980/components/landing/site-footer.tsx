@@ -12,28 +12,34 @@ export function SiteFooter() {
           <p className="mt-2 text-sm text-muted">{siteContent.brand.tagline}</p>
           <p className="mt-3 max-w-xl text-sm leading-7 text-muted">{siteContent.footer.description}</p>
         </div>
-        <div>
+        <nav aria-label="Stopka - nawigacja">
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent">Nawigacja</p>
-          <div className="mt-4 flex flex-wrap gap-4 text-sm text-muted">
+          <ul className="mt-4 flex flex-wrap gap-4 text-sm text-muted">
             {siteContent.footer.links.map((link) => (
-              <a key={link.label} href={link.href} className="transition hover:text-white">
-                {link.label}
-              </a>
+              <li key={link.label}>
+                <a href={link.href} className="transition hover:text-white">
+                  {link.label}
+                </a>
+              </li>
             ))}
-          </div>
-        </div>
+          </ul>
+        </nav>
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent">Przydatne informacje</p>
           <div className="mt-4 space-y-3 text-sm leading-6 text-muted">
-            {address ? <p>{address}</p> : null}
+            {address ? <address className="not-italic">{address}</address> : null}
             {hours ? <p>{hours}</p> : null}
-            <div className="flex flex-wrap gap-4 pt-1">
-              {siteContent.footer.utilityLinks.map((link) => (
-                <a key={link.label} href={link.href} className="transition hover:text-white">
-                  {link.label}
-                </a>
-              ))}
-            </div>
+            <nav aria-label="Stopka - szybkie akcje">
+              <ul className="flex flex-wrap gap-4 pt-1">
+                {siteContent.footer.utilityLinks.map((link) => (
+                  <li key={link.label}>
+                    <a href={link.href} className="transition hover:text-white">
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
         </div>
       </div>

@@ -12,18 +12,21 @@ import { TestimonialsSection } from "@/components/landing/testimonials-section";
 
 export default function HomePage() {
   return (
-    <main id="top">
+    <>
       <SiteHeader />
-      <HeroSection />
-      <ServicesSection />
-      <AboutSection />
-      <TeamSection />
-      <PricingSection />
-      <TestimonialsSection />
-      <GallerySection />
-      <ContactSection />
-      <FaqSection />
+      <main id="content" className="pb-6" tabIndex={-1}>
+        <div id="top" />
+        <HeroSection />
+        <ServicesSection />
+        <AboutSection />
+        <TeamSection />
+        <PricingSection />
+        <TestimonialsSection />
+        <GallerySection />
+        <ContactSection />
+        <FaqSection />
+      </main>
       <SiteFooter />
-    </main>
+    </>
   );
 }
