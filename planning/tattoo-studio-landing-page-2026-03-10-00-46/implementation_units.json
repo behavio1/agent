@@ -1,0 +1,77 @@
+[
+  {
+    "id": "unit-1",
+    "title": "Project Setup, Dependencies, and Base UI Primitives",
+    "summary": "Install required libraries (framer-motion, react-hook-form, zod, lucide-react), configure shadcn/ui, set up foundational components (Button, Input, Textarea, Label, Form, Accordion, Dialog), establish dark/edgy theme in Tailwind, and create static data mock file lib/data.ts.",
+    "acceptanceCriteria": "Dependencies installed without errors. Shadcn UI primitives exist. lib/data.ts exports typed mock data. Tailwind configured for dark mode.",
+    "dependencies": [],
+    "estimatedComplexity": "Medium"
+  },
+  {
+    "id": "unit-2",
+    "title": "Layout, Navbar, and Footer Implementation",
+    "summary": "Create the responsive sticky Navbar with anchor links and mobile menu toggle. Create the Footer with social links, privacy/TOS stubs. Integrate into app/layout.tsx.",
+    "acceptanceCriteria": "Navbar is sticky and displays links correctly on desktop and mobile. Footer displays social links. app/layout.tsx wraps children with Navbar and Footer.",
+    "dependencies": [
+      "unit-1"
+    ],
+    "estimatedComplexity": "Low"
+  },
+  {
+    "id": "unit-3",
+    "title": "Implement Hero and About/Artists Sections",
+    "summary": "Build HeroSection.tsx with a background image, typography, and CTA button. Build AboutArtistsSection.tsx mapping over artist mock data to display cards with bio, styles, and image.",
+    "acceptanceCriteria": "Hero section renders large banner with readable text and clickable CTA. About section displays at least 2 artist profiles. Responsive on mobile and desktop.",
+    "dependencies": [
+      "unit-1",
+      "unit-2"
+    ],
+    "estimatedComplexity": "Low"
+  },
+  {
+    "id": "unit-4",
+    "title": "Implement Services/Pricing and FAQ Sections",
+    "summary": "Build ServicesPricingSection.tsx displaying list/grid of services and base pricing. Build FAQSection.tsx using Shadcn Accordion to display common questions and aftercare instructions.",
+    "acceptanceCriteria": "Services listed clearly. FAQ section renders functional accordion that expands and collapses. Includes aftercare info.",
+    "dependencies": [
+      "unit-1",
+      "unit-2"
+    ],
+    "estimatedComplexity": "Medium"
+  },
+  {
+    "id": "unit-5",
+    "title": "Implement Interactive Portfolio Gallery",
+    "summary": "Build PortfolioGallerySection.tsx with category filtering. Implement a click-to-open Lightbox modal using Shadcn Dialog to show full-size images.",
+    "acceptanceCriteria": "Gallery renders a grid of images. Clicking filters updates displayed images. Clicking an image opens a modal displaying larger image. Responsive grid.",
+    "dependencies": [
+      "unit-1",
+      "unit-2"
+    ],
+    "estimatedComplexity": "High"
+  },
+  {
+    "id": "unit-6",
+    "title": "Implement Contact Form and Location Details",
+    "summary": "Build ContactBookingSection.tsx with booking form using react-hook-form and zod (Name, Email, Phone, Preferred Artist, Description, File Upload placeholder). Implement mock submission handling. Include studio location info, hours, and map iframe.",
+    "acceptanceCriteria": "Form validates required fields. Displays validation errors if submitted empty. Simulates submission delay and shows success message. Includes location, hours, phone, and email.",
+    "dependencies": [
+      "unit-1",
+      "unit-2"
+    ],
+    "estimatedComplexity": "High"
+  },
+  {
+    "id": "unit-7",
+    "title": "Page Assembly, Framer Motion Animations, and Polish",
+    "summary": "Assemble all sections in app/page.tsx. Add Framer Motion scroll/entry animations. Ensure images use next/image. Run Lighthouse audits to confirm 90+ scores.",
+    "acceptanceCriteria": "app/page.tsx renders all sections in order. Sections animate smoothly on scroll. No browser console errors. Lighthouse scores are 90+ for Performance, Accessibility, and Best Practices.",
+    "dependencies": [
+      "unit-3",
+      "unit-4",
+      "unit-5",
+      "unit-6"
+    ],
+    "estimatedComplexity": "Medium"
+  }
+]
