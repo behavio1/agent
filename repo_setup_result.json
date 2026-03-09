@@ -39,7 +39,7 @@
   ],
   "verification": {
     "build": "npm run build -w hair-salon-smoke-1773032079",
-    "commit": "41edabb",
+    "commit": "94fb12d",
     "push": "git push origin main"
   }
 }
