@@ -5,8 +5,8 @@
     "projects/*"
   ],
   "scripts": {
-    "dev": "npm run dev -w hair-salon-smoke-1773027747",
-    "build": "npm run build -w hair-salon-smoke-1773027747",
-    "start": "npm run start -w hair-salon-smoke-1773027747"
+    "dev": "npm run dev -w hair-salon-smoke-1773028284",
+    "build": "npm run build -w hair-salon-smoke-1773028284",
+    "start": "npm run start -w hair-salon-smoke-1773028284"
   }
 }
