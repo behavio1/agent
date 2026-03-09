@@ -1,58 +1,67 @@
-# Technical Design: Massage Salon Landing Page
+# Technical Design: Landing Page dla Salonu Tatuażu
 
-## 1. Architecture overview
-The application is a single-page Next.js application built with React, Tailwind CSS, and TypeScript. The UI is currently a functional monolith inside `src/app/page.tsx` scaffolded during repository setup. The target architecture refines this by extracting functional sections into distinct, reusable React components and isolating mock data from the UI to improve maintainability and adherence to a clear data model.
+## 1. Architecture Overview
+- **Framework:** Next.js 14 (App Router) using React 18.
+- **Language:** TypeScript for type safety across components and data models.
+- **Styling:** Tailwind CSS for rapid, utility-first styling with mobile-first responsive design. Lucide React for consistent icons.
+- **Deployment:** Vercel for continuous deployment, caching, and optimized Edge delivery.
+- **Paradigm:** The application will heavily rely on React Server Components (RSC) to maximize performance and SEO. Client Components (`"use client"`) will be used strictly for interactive islands (e.g., gallery filtering, FAQ accordions, and the contact form).
+- **Assets:** Next.js `<Image />` component will handle automatic optimization (WebP, resizing, lazy-loading) for the heavy visual assets (Hero, Portfolio, Artists).
 
-The architecture is entirely client-side rendered (or statically generated, as no dynamic server features are currently required), ensuring high performance (Lighthouse scores) and straightforward Vercel deployment.
+## 2. Repository Context and Relevant Existing Files
+The project is initialized as a Next.js application at `projects/tattoo-studio-landing-page`.
 
-## 2. Repository context and relevant existing files
-- **Root Directory**: `projects/massage-salon-landing-page`
-- **Current Entry Point**: `projects/massage-salon-landing-page/src/app/page.tsx` (a ~400-line monolith containing all sections).
-- **Styling**: `projects/massage-salon-landing-page/src/app/globals.css` (Tailwind imports) and `tailwind.config.ts`.
-- **Target Component Directory**: `projects/massage-salon-landing-page/src/components/` (to be created).
-- **Target Data Directory**: `projects/massage-salon-landing-page/src/data/` (to be created).
+**Key files and directories expected to change/be created:**
+- `projects/tattoo-studio-landing-page/src/app/layout.tsx`: Root layout, containing the global navigation (Navbar), footer (Footer), and Polish SEO metadata.
+- `projects/tattoo-studio-landing-page/src/app/page.tsx`: The main landing page orchestrating all sections.
+- `projects/tattoo-studio-landing-page/src/components/*`: Directory for reusable UI components (e.g., `Button`, `SectionHeading`) and page-specific sections.
+- `projects/tattoo-studio-landing-page/src/data/mockData.ts`: Static JSON-like data structure to power the page content (acting as the CMS for the MVP).
+- `projects/tattoo-studio-landing-page/public/*`: Placeholder and static images.
 
-## 3. Component and page breakdown
-To satisfy the requirements and clean up the monolith, `src/app/page.tsx` will be refactored into the following component structure:
-- `src/app/page.tsx`: The main page composing the sections below.
-- `src/components/layout/Navbar.tsx`: Sticky navigation menu with mobile drawer.
-- `src/components/layout/Footer.tsx`: Footer with social links and business info.
-- `src/components/sections/Hero.tsx`: High-impact top section with "Book Now" CTA.
-- `src/components/sections/Services.tsx`: Grid displaying available massage therapies.
-- `src/components/sections/Pricing.tsx`: Transparent price list.
-- `src/components/sections/About.tsx`: Salon philosophy and a sub-section for **Team/Qualifications**, showcasing 2-3 therapist profiles.
-- `src/components/sections/Testimonials.tsx`: Customer reviews.
-- `src/components/sections/Contact.tsx`: Location, business hours, and functional-looking contact form with simple success state.
+## 3. Component and Page Breakdown
+The single page application will be constructed from modular section components in `src/components/sections/`:
 
-## 4. Data model and state boundaries
-Data will be stored as static TypeScript objects in `src/data/mockData.ts` to simulate a CMS or database.
+1. **`Navbar`**: Fixed navigation with links to sections.
+2. **`HeroSection`**: Background image (or video placeholder) of tattooing, studio name, tagline, and primary CTA ("Umów się na sesję").
+3. **`AboutSection`**: Static text content describing the studio's philosophy, hygiene standards, and atmosphere.
+4. **`ArtistsSection`**: Grid of artist cards displaying names, preferred styles, and Instagram links.
+5. **`PortfolioSection`** (Client Component): A masonry or responsive grid gallery of tattoo photos. Includes a client-side filter (by style or artist).
+6. **`ServicesSection`**: List/grid of offered services (custom tattoos, flash, cover-ups, piercing, laser removal) with simple icons.
+7. **`TestimonialsSection`**: Review cards displaying client ratings and text.
+8. **`FAQSection`** (Client Component): Accordion-style list of frequently asked questions regarding pricing, pain, preparation, and aftercare.
+9. **`ContactSection`** (Client Component): Contact form (Name, Email, Message), embedded map, opening hours, phone, and email details.
+10. **`Footer`**: Copyright info, privacy policy link, and social media links.
 
-**Data Models**:
-- `Service`: `{ id: string, title: string, description: string, duration: string, icon: string }`
-- `PricingItem`: `{ id: string, name: string, duration: string, price: string }`
-- `TeamMember`: `{ id: string, name: string, role: string, description: string, image: string }`
-- `Testimonial`: `{ id: string, author: string, content: string, rating: number }`
+## 4. Data Model and State Boundaries
+Content will be managed statically via typed arrays exported from `src/data/mockData.ts`.
 
-**State Boundaries**:
-- **Navbar**: Local state for mobile menu toggle (`isMenuOpen`).
-- **Contact Form**: Local state for form submission simulation (`isSubmitting`, `isSuccess`).
+### Data Structures (TypeScript Interfaces)
+- `Artist`: `{ id: string; name: string; styles: string[]; image: string; socialLink: string }`
+- `PortfolioItem`: `{ id: string; imageUrl: string; artistId: string; style: string; altText: string }`
+- `Service`: `{ id: string; title: string; description: string; icon: string }`
+- `Testimonial`: `{ id: string; author: string; rating: number; text: string }`
+- `FAQ`: `{ id: string; question: string; answer: string }`
 
-## 5. API and integration surface
-- No external backend or database is required.
-- The "Book Now" CTA and map links will trigger external default behaviors (e.g., `tel:`, `mailto:`, or `https://maps.google.com`).
-- The Contact Form will use an `e.preventDefault()` handler to simulate submission locally without requiring a live API.
+### State Boundaries (Client Components)
+- **`PortfolioSection`**: Requires `activeFilter` (string) state to toggle visible gallery items.
+- **`FAQSection`**: Requires `openItemId` (string | null) state to manage accordion toggles.
+- **`ContactForm`**: Requires form state (name, email, message) and `submissionStatus` ('idle' | 'loading' | 'success' | 'error').
 
-## 6. Ordered implementation strategy
-1. **Data Extraction**: Create `src/data/mockData.ts` and define typed arrays for Services, Pricing, Team, and Testimonials.
-2. **Component Scaffold**: Create the `src/components/layout` and `src/components/sections` directories.
-3. **Refactoring - Navigation & Footer**: Extract the Navbar and Footer from `page.tsx` into their respective files.
-4. **Refactoring - Sections**: Extract Hero, Services, Pricing, and Testimonials into separate components, hooking them up to the mock data.
-5. **Feature Addition - Team**: Extend the About section component to include team member cards, fulfilling the requirement for therapist qualifications.
-6. **Feature Addition - Contact Form State**: Extract the Contact section and add a `useState` hook to show a "Thank you" message upon form submission.
-7. **Final Integration**: Update `src/app/page.tsx` to import and render only the section components sequentially.
+## 5. API and Integration Surface
+- **Contact Form Submission**: Given the MVP requirements, the form will use a Server Action (`src/app/actions/submitContact.ts`) to validate the input (using simple regex or native HTML5 validation). Upon successful validation, it will simulate an email dispatch (or construct a `mailto:` link if preferred by the user client-side) and return a success message to the UI. No external database or active third-party integrations (like Booksy or Resend) will be strictly enforced for the initial deploy, keeping the architecture lean.
 
-## 7. Testing and validation strategy
-- **Visual Validation**: Run `npm run dev` and manually verify that all sections render correctly and match the Polish UI requirements.
-- **Responsive Testing**: Verify the mobile navigation toggle works and all section grids gracefully degrade to single columns on small screens.
-- **Interaction Testing**: Submit the contact form to ensure the mock success state appears. Click the "Book Now" CTA to verify it triggers the `tel:` link.
-- **Static Analysis**: Run `npm run lint` and `npm run build` to ensure no TypeScript or ESLint errors exist before merging to `main`.
+## 6. Ordered Implementation Strategy
+1. **Core Setup & Global Layout**: Update `layout.tsx` with Polish metadata, font configuration, Navbar, and Footer. Configure `tailwind.config.ts` if custom colors/fonts are needed.
+2. **Data Mocking**: Create `src/data/mockData.ts` and define the interfaces and placeholder content in Polish.
+3. **Static Sections**: Build `HeroSection`, `AboutSection`, `ServicesSection`, and `TestimonialsSection` using pure React Server Components.
+4. **Interactive Gallery**: Build `PortfolioSection` with image optimization (`next/image`) and client-side filtering logic.
+5. **Artists & FAQ**: Build `ArtistsSection` (static) and `FAQSection` (interactive accordion).
+6. **Contact & Forms**: Build `ContactSection` integrating the form UI, validation state, Server Action logic, and static contact details (address/map).
+7. **Orchestration**: Assemble all sections in `src/app/page.tsx`.
+8. **Polish & Optimization**: Ensure Lighthouse scores are >90 by checking alt attributes, color contrast, semantic HTML, and image lazy loading.
+
+## 7. Testing and Validation Strategy
+- **Responsive Design Check**: Manually test the layout across mobile (320px), tablet (768px), and desktop (1024px+) breakpoints using browser developer tools.
+- **Lighthouse Audits**: Run Google Lighthouse in Chrome DevTools on local build and Vercel preview URLs. Target metrics must be >= 90 for Performance, Accessibility, Best Practices, and SEO.
+- **Accessibility Validation**: Ensure all interactive elements (buttons, form fields) have `aria-label` or visible labels, and all `next/image` components have descriptive `alt` text. Verify keyboard navigability of the FAQ accordion and gallery filters.
+- **Functional Testing**: Verify the contact form rejects empty submissions and successfully displays a success state upon correct submission. Test the portfolio filters to ensure correct images render.
