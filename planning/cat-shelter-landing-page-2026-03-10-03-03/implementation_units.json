@@ -1,0 +1,63 @@
+[
+  {
+    "id": "setup-and-data-layer",
+    "title": "Project Setup and Static Data Layer",
+    "summary": "Initialize Next.js App Router project with Tailwind CSS, configure Polish locale, and create the static data source.",
+    "acceptanceCriteria": "- Next.js project initialized with Tailwind CSS and App Router.\n- `html lang=\"pl\"` set in `app/layout.tsx`.\n- `lib/data.ts` created with static mock data for cats, shelter statistics, donation info, and contact details.\n- Basic project builds successfully.",
+    "dependencies": [],
+    "estimatedComplexity": "small"
+  },
+  {
+    "id": "layout-navigation",
+    "title": "Global Layout, Header, and Footer",
+    "summary": "Create the persistent layout components including a responsive header with smooth scrolling navigation and a footer.",
+    "acceptanceCriteria": "- `Header` component includes a sticky navigation bar and a mobile hamburger menu toggle.\n- Navigation links point to `#adopcja`, `#wsparcie`, `#wolontariat`, `#kontakt`.\n- `Footer` includes copyright info, social media links, and a link to the privacy policy.\n- Both components are integrated into `app/layout.tsx`.",
+    "dependencies": [
+      "setup-and-data-layer"
+    ],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "hero-and-about-sections",
+    "title": "Hero and About Us Sections",
+    "summary": "Implement the top sections of the landing page: a welcoming Hero with CTAs and an About section with shelter statistics.",
+    "acceptanceCriteria": "- `Hero` section displays a welcoming Polish headline, a placeholder background image, and primary CTAs for 'Adoptuj' and 'Wesprzyj nas'.\n- `About` section displays the shelter's mission statement, brief history, and key statistics loaded from `lib/data.ts`.\n- Both sections are added to `app/page.tsx`.",
+    "dependencies": [
+      "setup-and-data-layer"
+    ],
+    "estimatedComplexity": "small"
+  },
+  {
+    "id": "adoption-gallery-section",
+    "title": "Adoption Gallery Section",
+    "summary": "Build the responsive grid of available cats using standard UI cards.",
+    "acceptanceCriteria": "- `CatCard` component created to display cat image (with `next/image` and alt text), name, age, and short description.\n- `AdoptionGallery` section maps over the static cat data to render a responsive CSS grid of `CatCard`s.\n- The section has the ID `adopcja` for smooth scrolling and is added to `app/page.tsx`.",
+    "dependencies": [
+      "setup-and-data-layer"
+    ],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "support-and-volunteer-sections",
+    "title": "Support and Volunteer Sections",
+    "summary": "Implement the sections detailing how to support the shelter financially, materially, and through volunteering.",
+    "acceptanceCriteria": "- `Support` section (ID `wsparcie`) displays bank account details and lists needed items based on data.\n- `Volunteer` section (ID `wolontariat`) displays instructions on how to become a volunteer and includes a simple, client-side only contact/signup form.\n- Form submissions are simulated to show a 'Dziękujemy' success message.\n- Both sections are integrated into `app/page.tsx`.",
+    "dependencies": [
+      "setup-and-data-layer"
+    ],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "contact-section-and-polish",
+    "title": "Contact Section and Final Polish",
+    "summary": "Implement the Contact section and perform final checks for responsiveness, accessibility, and smooth scrolling.",
+    "acceptanceCriteria": "- `Contact` section (ID `kontakt`) displays address, opening hours, phone, email, and a basic contact form with a simulated success message.\n- Smooth scrolling works seamlessly across all navigation links from the header.\n- The site is fully responsive on mobile, tablet, and desktop.\n- Lighthouse checks indicate high performance and WCAG 2.1 AA compliance (e.g., correct color contrasts and alt texts on all images).",
+    "dependencies": [
+      "layout-navigation",
+      "hero-and-about-sections",
+      "adoption-gallery-section",
+      "support-and-volunteer-sections"
+    ],
+    "estimatedComplexity": "medium"
+  }
+]
