@@ -1,0 +1,111 @@
+[
+  {
+    "id": "unit-1-setup",
+    "title": "Foundation & Global Setup",
+    "summary": "Update `app/layout.tsx` with Polish SEO metadata, semantic layout tags, and custom fonts. Set up global Tailwind configuration with a warm, pet-friendly color scheme.",
+    "acceptanceCriteria": [
+      "The root layout has an `html` tag with `lang=\"pl\"`.",
+      "SEO title is set to 'Schronisko Ciepła Buda' with an appropriate description in Polish.",
+      "Tailwind theme includes warm colors appropriate for the shelter branding.",
+      "A standard sans-serif font is configured."
+    ],
+    "dependencies": [],
+    "estimatedComplexity": "low"
+  },
+  {
+    "id": "unit-2-ui-components",
+    "title": "Base UI Components",
+    "summary": "Create or generate the fundamental UI components needed across the application using standard React patterns or shadcn/ui.",
+    "acceptanceCriteria": [
+      "A reusable `Button` component exists and supports various variants (e.g., solid, outline).",
+      "A reusable `Card` component exists for wrapping content.",
+      "Form components (`Input`, `Textarea`, `Label`) are available and styled."
+    ],
+    "dependencies": ["unit-1-setup"],
+    "estimatedComplexity": "low"
+  },
+  {
+    "id": "unit-3-data-mocking",
+    "title": "Data Mocking & Types",
+    "summary": "Define the TypeScript type for `Animal` and mock a centralized data module `lib/data.ts` containing animals, contact details, and navigation links.",
+    "acceptanceCriteria": [
+      "An `Animal` type is exported with properties: `id`, `name`, `type`, `age`, `breed`, `description`, and `imageUrl`.",
+      "An array of at least 3 featured animals is exported.",
+      "Shelter contact information (address, phone, email, opening hours) is exported.",
+      "Navigation links data structure is exported."
+    ],
+    "dependencies": [],
+    "estimatedComplexity": "low"
+  },
+  {
+    "id": "unit-4-global-layout",
+    "title": "Global Layout Components",
+    "summary": "Implement the `Header` and `Footer` components and integrate them into the global layout.",
+    "acceptanceCriteria": [
+      "The `Header` displays the shelter name/logo and desktop navigation links.",
+      "The `Header` includes a working mobile hamburger menu (Client Component).",
+      "The `Footer` displays a contact summary, social links, and copyright info.",
+      "Both components are responsive and integrated into `app/layout.tsx`."
+    ],
+    "dependencies": ["unit-3-data-mocking", "unit-1-setup"],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "unit-5-hero-about",
+    "title": "Hero and About Sections",
+    "summary": "Build the `Hero` section and the `About` section.",
+    "acceptanceCriteria": [
+      "The `Hero` section renders the 'Schronisko Ciepła Buda' title, a tagline, and primary CTAs ('Adoptuj', 'Wesprzyj') with anchor links.",
+      "The `About` section displays the shelter's mission and history with placeholder text.",
+      "Both sections are fully responsive on mobile, tablet, and desktop viewports."
+    ],
+    "dependencies": ["unit-2-ui-components"],
+    "estimatedComplexity": "low"
+  },
+  {
+    "id": "unit-6-adoption",
+    "title": "Adoption Gallery Section",
+    "summary": "Implement the 'Do adopcji' section using the mocked animal data to render a responsive gallery grid.",
+    "acceptanceCriteria": [
+      "The section iterates over the mocked animals from `lib/data.ts`.",
+      "Each animal is displayed in a `Card` showing its photo, name, age, breed/type, and description.",
+      "Animal images are loaded quickly (using `next/image` with proper alt text).",
+      "The gallery grid is responsive and works well on all screen sizes."
+    ],
+    "dependencies": ["unit-2-ui-components", "unit-3-data-mocking"],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "unit-7-help-contact",
+    "title": "How to Help and Contact Sections",
+    "summary": "Build the 'Jak pomóc' section detailing support methods and the 'Kontakt' section containing contact information, a map, and a contact form.",
+    "acceptanceCriteria": [
+      "The 'How to Help' section lists donation, material gifts, volunteering, and virtual adoption options.",
+      "The 'Contact' section displays address, phone, email, and opening hours from `lib/data.ts`.",
+      "A visual contact form (Name, Email, Message, Submit) is present and functional (UI only, prevents default on submit).",
+      "A map placeholder or embedded map is visible in the Contact section.",
+      "Form inputs have proper associated labels for accessibility."
+    ],
+    "dependencies": ["unit-2-ui-components", "unit-3-data-mocking"],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "unit-8-assembly-polish",
+    "title": "Page Assembly, Polish, & Verification",
+    "summary": "Assemble all sections sequentially into `app/page.tsx`, ensure smooth scrolling navigation, verify accessibility, and guarantee responsive layout without horizontal scroll issues.",
+    "acceptanceCriteria": [
+      "`app/page.tsx` sequentially renders the Hero, About, Adoption, HowToHelp, and Contact sections.",
+      "Navigation links in the Header correctly scroll to the respective section IDs.",
+      "No horizontal scrolling occurs on mobile devices.",
+      "All images have meaningful `alt` attributes.",
+      "The application passes basic accessibility checks and achieves fast LCP for the Hero section."
+    ],
+    "dependencies": [
+      "unit-4-global-layout",
+      "unit-5-hero-about",
+      "unit-6-adoption",
+      "unit-7-help-contact"
+    ],
+    "estimatedComplexity": "medium"
+  }
+]
