@@ -229,7 +229,7 @@ export function ContactBookingSection() {
                     <FormField
                       control={form.control}
                       name="referenceImage"
-                      render={({ field: { value, onChange, ...fieldProps } }) => (
+                      render={({ field: { onChange, ...fieldProps } }) => (
                         <FormItem>
                           <FormLabel>Reference Image (Optional)</FormLabel>
                           <FormControl>
