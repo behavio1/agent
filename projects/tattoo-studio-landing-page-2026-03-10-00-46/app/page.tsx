@@ -3,6 +3,7 @@ import { AboutArtistsSection } from "@/components/sections/AboutArtistsSection";
 import { PortfolioGallerySection } from "@/components/sections/PortfolioGallerySection";
 import { ServicesPricingSection } from "@/components/sections/ServicesPricingSection";
 import { FAQSection } from "@/components/sections/FAQSection";
+import { ContactBookingSection } from "@/components/sections/ContactBookingSection";
 
 export default function Home() {
   return (
@@ -12,11 +13,7 @@ export default function Home() {
       <PortfolioGallerySection />
       <ServicesPricingSection />
       <FAQSection />
-
-      {/* Contact Section Placeholder */}
-      <section id="contact" className="flex items-center justify-center min-h-screen">
-        <h2 className="text-3xl font-semibold">Contact Section</h2>
-      </section>
+      <ContactBookingSection />
     </div>
   );
 }
