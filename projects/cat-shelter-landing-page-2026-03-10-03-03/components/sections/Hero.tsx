@@ -33,7 +33,7 @@ export function Hero() {
           </div>
           <div className="mx-auto flex w-full items-center justify-center lg:justify-end mt-8 lg:mt-0">
             <div className="relative h-[400px] w-full max-w-[500px] sm:h-[450px] lg:h-[550px]">
-              <div className="absolute inset-0 bg-orange-100 rounded-2xl rotate-3 scale-105 z-0 transition-transform duration-300 hover:rotate-6"></div>
+              <div aria-hidden="true" className="absolute inset-0 bg-orange-100 rounded-2xl rotate-3 scale-105 z-0 transition-transform duration-300 hover:rotate-6"></div>
               <Image
                 src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&fit=crop&q=80&w=800"
                 alt="Szczęśliwy rudy kot patrzący w górę"

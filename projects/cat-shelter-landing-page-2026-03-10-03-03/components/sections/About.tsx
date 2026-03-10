@@ -9,15 +9,15 @@ export function About() {
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
           
           <div className="relative aspect-square w-full max-w-[500px] mx-auto lg:mx-0 order-last lg:order-first">
-            <div className="absolute inset-0 bg-slate-200 rounded-[2rem] -rotate-3 z-0"></div>
+            <div aria-hidden="true" className="absolute inset-0 bg-slate-200 rounded-[2rem] -rotate-3 z-0"></div>
             <Image
               src="https://images.unsplash.com/photo-1511044568932-338cba0ad803?auto=format&fit=crop&q=80&w=800"
               alt="Grupa kotów w schronisku"
               fill
               className="object-cover rounded-[2rem] shadow-xl z-10 relative"
             />
-            <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-orange-200/50 rounded-full z-0 blur-3xl"></div>
-            <div className="absolute -top-6 -left-6 w-32 h-32 bg-orange-300/30 rounded-full z-0 blur-2xl"></div>
+            <div aria-hidden="true" className="absolute -bottom-6 -right-6 w-48 h-48 bg-orange-200/50 rounded-full z-0 blur-3xl"></div>
+            <div aria-hidden="true" className="absolute -top-6 -left-6 w-32 h-32 bg-orange-300/30 rounded-full z-0 blur-2xl"></div>
           </div>
           
           <div className="space-y-8 z-20 relative">

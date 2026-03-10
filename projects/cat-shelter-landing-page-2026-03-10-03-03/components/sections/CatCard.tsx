@@ -3,7 +3,6 @@ import { Cat } from "@/lib/data"
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
