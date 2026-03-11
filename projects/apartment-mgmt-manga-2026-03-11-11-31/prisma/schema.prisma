@@ -1,0 +1,113 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model User {
+  id       String  @id @default(cuid())
+  email    String  @unique
+  password String // Hashed
+  role     Role    @default(TENANT)
+  name     String?
+  phone    String? // Contact info that tenants can update
+
+  tenantProfile       TenantProfile?
+  payments            Payment[]
+  maintenance         MaintenanceRequest[] @relation("SubmittedRequests")
+  assignedMaintenance MaintenanceRequest[] @relation("AssignedRequests")
+}
+
+enum Role {
+  ADMIN
+  TENANT
+}
+
+model Property {
+  id          String         @id @default(cuid())
+  title       String
+  description String?
+  price       Float
+  size        Int
+  status      PropertyStatus @default(AVAILABLE)
+  imageUrl    String? // URL from Vercel Blob
+
+  tenantId String?        @unique
+  tenant   TenantProfile? @relation(fields: [tenantId], references: [id])
+}
+
+enum PropertyStatus {
+  AVAILABLE
+  OCCUPIED
+  MAINTENANCE
+}
+
+model TenantProfile {
+  id         String    @id @default(cuid())
+  userId     String    @unique
+  user       User      @relation(fields: [userId], references: [id])
+  leaseStart DateTime?
+  leaseEnd   DateTime?
+  balance    Float     @default(0)
+
+  property Property?
+}
+
+model Payment {
+  id     String        @id @default(cuid())
+  amount Float
+  date   DateTime      @default(now())
+  status PaymentStatus @default(COMPLETED)
+  userId String
+  user   User          @relation(fields: [userId], references: [id])
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+}
+
+model MaintenanceRequest {
+  id          String            @id @default(cuid())
+  title       String
+  description String
+  imageUrl    String? // URL from Vercel Blob
+  status      MaintenanceStatus @default(OPEN)
+  createdAt   DateTime          @default(now())
+
+  userId String
+  user   User   @relation("SubmittedRequests", fields: [userId], references: [id])
+
+  assignedToId String?
+  assignedTo   User?   @relation("AssignedRequests", fields: [assignedToId], references: [id])
+}
+
+enum MaintenanceStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+}
+
+model Application {
+  id        String    @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  message   String?
+  status    AppStatus @default(PENDING)
+  createdAt DateTime  @default(now())
+}
+
+enum AppStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
