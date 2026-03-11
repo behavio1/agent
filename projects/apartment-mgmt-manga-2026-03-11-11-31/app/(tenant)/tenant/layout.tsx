@@ -15,6 +15,7 @@ export default function TenantLayout({ children }: { children: React.ReactNode }
           <div className="flex items-center gap-6 font-bold">
             <nav className="flex gap-4">
               <Link href="/tenant" className="hover:underline">Dashboard</Link>
+              <Link href="/tenant/profile" className="hover:underline">Profile</Link>
               <Link href="/tenant/rent" className="hover:underline">Rent</Link>
               <Link href="/tenant/maintenance" className="hover:underline">Maintenance</Link>
             </nav>
