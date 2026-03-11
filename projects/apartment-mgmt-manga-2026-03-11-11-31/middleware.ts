@@ -56,7 +56,7 @@ export async function middleware(request: NextRequest) {
         secure: process.env.NODE_ENV === "production",
       });
     }
-  } catch (_error) {
+  } catch {
     // skip
   }
 
