@@ -1,0 +1,102 @@
+[
+  {
+    "id": "init_infrastructure",
+    "title": "Project Setup & Database Schema",
+    "summary": "Initialize Next.js App Router project, configure Vercel Postgres/SQLite, setup Prisma schema, and prepare seed script.",
+    "acceptanceCriteria": "Next.js 15+ App Router is running. Prisma schema contains User, Property, TenantProfile, Payment, MaintenanceRequest, and Application models. Database can be migrated and seeded with an initial Admin user.",
+    "dependencies": [],
+    "estimatedComplexity": "low"
+  },
+  {
+    "id": "ui_components_and_theming",
+    "title": "Manga Theme Styling & Reusable Components",
+    "summary": "Configure Tailwind v4 with manga-style variables (halftone patterns, comic fonts, thick borders). Build base UI components.",
+    "acceptanceCriteria": "globals.css includes manga-style utilities (halftones, custom fonts). MangaPanel, SpeechBubble, HalftoneBg, ActionText, and PropertyCard components are created, styled with thick black borders, and respond cleanly on mobile.",
+    "dependencies": [
+      "init_infrastructure"
+    ],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "auth_and_layouts",
+    "title": "Authentication & Portal Layouts",
+    "summary": "Implement simple session/cookie-based auth or NextAuth for ADMIN and TENANT roles. Create routing structure and layouts for public, admin, and tenant areas.",
+    "acceptanceCriteria": "Unified /login page functions correctly. Middleware or layout checks enforce role-based access control (tenants cannot access /admin, public cannot access protected routes). Layout files are created with navigation.",
+    "dependencies": [
+      "ui_components_and_theming"
+    ],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "public_pages",
+    "title": "Public Landing Page & Application Form",
+    "summary": "Build the Manga-styled hero section, dynamic property listing grid, and tenant application form (/apply).",
+    "acceptanceCriteria": "Public landing page (/) displays a dynamic hero section. Available properties are fetched from DB and displayed in a grid of PropertyCards. Prospective tenants can submit an application via /apply, saving it to the database.",
+    "dependencies": [
+      "auth_and_layouts"
+    ],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "admin_property_management",
+    "title": "Admin Property Management",
+    "summary": "Implement Admin dashboard overview and property management features (CRUD), integrating Vercel Blob for property images.",
+    "acceptanceCriteria": "Admin dashboard (/admin) shows key metrics. Admin can view, add, edit, and remove properties in /admin/properties. Property creation/editing supports image upload via Vercel Blob using Server Actions.",
+    "dependencies": [
+      "auth_and_layouts"
+    ],
+    "estimatedComplexity": "high"
+  },
+  {
+    "id": "admin_tenant_management",
+    "title": "Admin Tenant & Application Management",
+    "summary": "Allow Admins to review applications, approve tenants, create user accounts for them, and assign them to properties.",
+    "acceptanceCriteria": "Admin can view pending applications in /admin/tenants. Admin can approve applications to create a User (Role: TENANT) and TenantProfile. Admin can assign an approved tenant to an available property, updating property status to OCCUPIED.",
+    "dependencies": [
+      "admin_property_management"
+    ],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "tenant_dashboard_profile",
+    "title": "Tenant Dashboard & Profile",
+    "summary": "Build the Tenant dashboard showing lease overview, and the profile page allowing tenants to update contact details.",
+    "acceptanceCriteria": "Tenant dashboard (/tenant) displays lease status, current balance, and recent notifications. Tenant can navigate to /tenant/profile to update phone and email. Profile updates persist to DB via Server Actions.",
+    "dependencies": [
+      "admin_tenant_management"
+    ],
+    "estimatedComplexity": "low"
+  },
+  {
+    "id": "rent_payments",
+    "title": "Rent Payments & Financial Tracking",
+    "summary": "Implement mock rent payments for tenants and financial tracking for admins.",
+    "acceptanceCriteria": "Tenant can view payment history and submit a mock rent payment in /tenant/rent. Payment submission updates tenant balance, creates a Payment record, and displays manga-style action text upon success. Admin can view a log of all payments in /admin/finance.",
+    "dependencies": [
+      "tenant_dashboard_profile"
+    ],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "maintenance_requests",
+    "title": "Maintenance Requests System",
+    "summary": "Implement submission flow for tenants (with image uploads via Vercel Blob) and management interface for admins.",
+    "acceptanceCriteria": "Tenant can submit a maintenance request with description and image upload at /tenant/maintenance. Admin views requests at /admin/maintenance, assigns them to staff/self, and updates status (OPEN, IN_PROGRESS, RESOLVED). Requests appear in speech bubble/panel styles.",
+    "dependencies": [
+      "tenant_dashboard_profile"
+    ],
+    "estimatedComplexity": "high"
+  },
+  {
+    "id": "final_polish",
+    "title": "Final Polish, Responsiveness & QA",
+    "summary": "Review all pages for strict adherence to Manga styling, mobile responsiveness, and end-to-end functionality.",
+    "acceptanceCriteria": "All manga panels reflow vertically on small screens. Fonts, borders, and halftones render with high contrast. Complete E2E flow (apply -> approve -> login -> pay rent -> request maintenance) works seamlessly without errors.",
+    "dependencies": [
+      "public_pages",
+      "rent_payments",
+      "maintenance_requests"
+    ],
+    "estimatedComplexity": "medium"
+  }
+]
