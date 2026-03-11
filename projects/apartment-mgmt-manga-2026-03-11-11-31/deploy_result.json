@@ -1,0 +1,4 @@
+{
+  "preview_url": null,
+  "deployment_summary": "Vercel deployment failed: No existing credentials found. VERCEL_TOKEN environment variable is missing, unable to authenticate the Vercel CLI."
+}
