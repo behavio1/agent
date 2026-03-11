@@ -1,8 +1,18 @@
 import { MangaPanel, ActionText } from "@/components/ui/manga";
 import { getSession } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
+import Link from "next/link";
+
+export const dynamic = "force-dynamic";
 
 export default async function AdminDashboard() {
   const session = await getSession();
+
+  const [propertiesCount, pendingAppsCount, openMaintenanceCount] = await Promise.all([
+    prisma.property.count(),
+    prisma.application.count({ where: { status: "PENDING" } }),
+    prisma.maintenanceRequest.count({ where: { status: "OPEN" } }),
+  ]);
 
   return (
     <div className="flex flex-col gap-8">
@@ -14,31 +24,31 @@ export default async function AdminDashboard() {
       </MangaPanel>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <MangaPanel className="bg-yellow-300 p-6 flex flex-col items-center">
+        <MangaPanel className="bg-yellow-300 p-6 flex flex-col items-center text-center">
           <h2 className="font-manga text-3xl mb-4 tracking-wider uppercase">Units</h2>
-          <p className="text-6xl font-black mb-2">12</p>
-          <p className="font-bold">Total Properties</p>
-          <button className="mt-4 bg-black text-white font-manga uppercase px-4 py-2 hover:bg-gray-800">
+          <p className="text-6xl font-black mb-2">{propertiesCount}</p>
+          <p className="font-bold mb-4">Total Properties</p>
+          <Link href="/admin/properties" className="mt-auto bg-black text-white font-manga uppercase px-4 py-2 hover:bg-gray-800 border-2 border-black w-full shadow-[2px_2px_0_0_#000]">
             Manage
-          </button>
+          </Link>
         </MangaPanel>
 
-        <MangaPanel className="bg-green-300 p-6 flex flex-col items-center">
+        <MangaPanel className="bg-green-300 p-6 flex flex-col items-center text-center">
           <h2 className="font-manga text-3xl mb-4 tracking-wider uppercase">Pending Apps</h2>
-          <p className="text-6xl font-black mb-2">3</p>
-          <p className="font-bold">Needs Review</p>
-          <button className="mt-4 bg-black text-white font-manga uppercase px-4 py-2 hover:bg-gray-800">
+          <p className="text-6xl font-black mb-2">{pendingAppsCount}</p>
+          <p className="font-bold mb-4">Needs Review</p>
+          <Link href="/admin/tenants" className="mt-auto bg-black text-white font-manga uppercase px-4 py-2 hover:bg-gray-800 border-2 border-black w-full shadow-[2px_2px_0_0_#000]">
             Review
-          </button>
+          </Link>
         </MangaPanel>
 
-        <MangaPanel className="bg-red-300 p-6 flex flex-col items-center">
+        <MangaPanel className="bg-red-300 p-6 flex flex-col items-center text-center">
           <h2 className="font-manga text-3xl mb-4 tracking-wider uppercase">Maintenance</h2>
-          <p className="text-6xl font-black mb-2">5</p>
-          <p className="font-bold">Open Tickets</p>
-          <button className="mt-4 bg-black text-white font-manga uppercase px-4 py-2 hover:bg-gray-800">
+          <p className="text-6xl font-black mb-2">{openMaintenanceCount}</p>
+          <p className="font-bold mb-4">Open Tickets</p>
+          <Link href="/admin/maintenance" className="mt-auto bg-black text-white font-manga uppercase px-4 py-2 hover:bg-gray-800 border-2 border-black w-full shadow-[2px_2px_0_0_#000]">
             Fix it!
-          </button>
+          </Link>
         </MangaPanel>
       </div>
     </div>
