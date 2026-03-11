@@ -1,0 +1,19 @@
+{
+  "lint": {
+    "status": "pass",
+    "output": "> apartment-mgmt-manga-2026-03-11-11-31@0.1.0 lint\n> eslint"
+  },
+  "typecheck": {
+    "status": "skipped",
+    "output": "Script 'typecheck' not found in package.json"
+  },
+  "build": {
+    "status": "pass",
+    "output": "▲ Next.js 16.1.6 (Turbopack)\n- Environments: .env\n\n⚠ The \"middleware\" file convention is deprecated. Please use \"proxy\" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy\n  Creating an optimized production build ...\n✓ Compiled successfully in 19.3s\n  Running TypeScript ...\n  Collecting page data using 3 workers ...\n  Generating static pages using 3 workers (0/10) ...\n✓ Generating static pages using 3 workers (10/10) in 610.9ms\n  Finalizing page optimization ..."
+  },
+  "all_passed": true,
+  "checks_skipped": [
+    "typecheck"
+  ],
+  "package_manager": "npm"
+}
