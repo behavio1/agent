@@ -1,0 +1,12 @@
+{
+  "init_infrastructure": "d6585250-538f-4bbe-994b-42348ee2f3e7",
+  "ui_components_and_theming": "3ca726a4-4bd0-48a8-af38-9c54525e0cad",
+  "auth_and_layouts": "d7c32ed1-19ff-4143-afe4-072ea168143e",
+  "public_pages": "14cb2d82-2e81-47a5-8b16-8a802e37b665",
+  "admin_property_management": "7df42973-c5c7-4b8a-876e-944595969dc0",
+  "admin_tenant_management": "0f20d6ad-b9d7-4af6-9a50-c7cebba19c16",
+  "tenant_dashboard_profile": "3abe2fea-a5dd-4975-ac21-d5a9d96fc1ec",
+  "rent_payments": "28886712-edd0-44c5-85ae-b87808a20ae8",
+  "maintenance_requests": "49f79479-5f09-40b4-810f-bc090cd6d611",
+  "final_polish": "09af1334-cbe4-4cf8-b7e8-5b5361c44a79"
+}
