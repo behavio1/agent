@@ -34,7 +34,7 @@ export default async function TenantDashboard() {
                 <span className="text-2xl">{property.title}</span>
               </div>
               
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="bg-blue-100 p-4 border-2 border-black">
                   <span className="text-gray-600 uppercase text-sm block">Lease Start</span>
                   <span>{tenantProfile.leaseStart ? new Date(tenantProfile.leaseStart).toLocaleDateString() : "TBD"}</span>

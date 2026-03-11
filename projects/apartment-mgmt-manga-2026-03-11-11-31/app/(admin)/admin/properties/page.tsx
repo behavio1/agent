@@ -13,14 +13,14 @@ export default async function AdminPropertiesPage() {
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex items-center justify-between">
-        <MangaPanel className="bg-yellow-300 p-4 inline-block" noShadow>
-          <ActionText as="h1" className="text-4xl text-black uppercase">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <MangaPanel className="bg-yellow-300 p-4 inline-block self-start md:self-auto" noShadow>
+          <ActionText as="h1" className="text-3xl md:text-4xl text-black uppercase">
             Property Management
           </ActionText>
         </MangaPanel>
         
-        <Link href="/admin/properties/new" className="bg-black text-white px-6 py-3 font-manga text-2xl uppercase tracking-widest hover:bg-gray-800 transition-colors border-4 border-black shadow-[4px_4px_0_0_#ef4444]">
+        <Link href="/admin/properties/new" className="inline-block self-start md:self-auto bg-black text-white px-6 py-3 font-manga text-xl md:text-2xl uppercase tracking-widest hover:bg-gray-800 transition-colors border-4 border-black shadow-[4px_4px_0_0_#ef4444] text-center">
           + Add Property
         </Link>
       </div>
