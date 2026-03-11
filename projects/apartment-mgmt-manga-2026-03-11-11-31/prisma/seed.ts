@@ -1,23 +1,19 @@
 import { PrismaClient, Role, PropertyStatus, AppStatus } from '@prisma/client'
+import bcrypt from 'bcryptjs'
 
 const prisma = new PrismaClient()
 
 async function main() {
-  // Clear existing data (optional, be careful in production!)
-  // await prisma.maintenanceRequest.deleteMany()
-  // await prisma.payment.deleteMany()
-  // await prisma.application.deleteMany()
-  // await prisma.property.deleteMany()
-  // await prisma.tenantProfile.deleteMany()
-  // await prisma.user.deleteMany()
+  const adminPassword = await bcrypt.hash('admin', 10)
+  const tenantPassword = await bcrypt.hash('tenant', 10)
 
   // Create an admin user
   await prisma.user.upsert({
     where: { email: 'admin@example.com' },
-    update: {},
+    update: { password: adminPassword },
     create: {
       email: 'admin@example.com',
-      password: 'hashedpassword', // In a real app, hash this! e.g., using bcrypt
+      password: adminPassword,
       role: Role.ADMIN,
       name: 'Manga Admin',
     },
@@ -26,10 +22,10 @@ async function main() {
   // Create a tenant user
   const tenantUser = await prisma.user.upsert({
     where: { email: 'tenant@example.com' },
-    update: {},
+    update: { password: tenantPassword },
     create: {
       email: 'tenant@example.com',
-      password: 'hashedpassword',
+      password: tenantPassword,
       role: Role.TENANT,
       name: 'Naruto Uzumaki',
       phone: '555-0101',

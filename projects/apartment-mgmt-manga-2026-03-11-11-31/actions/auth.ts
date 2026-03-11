@@ -2,6 +2,8 @@
 
 import { createSession, deleteSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
+import { prisma } from "@/lib/prisma";
+import bcrypt from "bcryptjs";
 
 export async function loginAction(formData: FormData) {
   const email = formData.get("email") as string;
@@ -11,21 +13,23 @@ export async function loginAction(formData: FormData) {
     return { error: "Email and password are required" };
   }
 
-  // TODO: Replace with real database validation
-  // Mocking simple check for demonstration:
-  let role: "ADMIN" | "TENANT" = "TENANT";
-  if (email === "admin@example.com" && password === "admin") {
-    role = "ADMIN";
-  } else if (email === "tenant@example.com" && password === "tenant") {
-    role = "TENANT";
-  } else {
-    return { error: "Invalid credentials (try admin@example.com/admin or tenant@example.com/tenant)" };
+  const user = await prisma.user.findUnique({
+    where: { email },
+  });
+
+  if (!user) {
+    return { error: "Invalid credentials" };
   }
 
-  const userId = role === "ADMIN" ? "admin-id" : "tenant-id";
-  await createSession(userId, email, role);
+  const isValid = await bcrypt.compare(password, user.password);
+  
+  if (!isValid) {
+    return { error: "Invalid credentials" };
+  }
 
-  if (role === "ADMIN") {
+  await createSession(user.id, user.email, user.role);
+
+  if (user.role === "ADMIN") {
     redirect("/admin");
   } else {
     redirect("/tenant");
