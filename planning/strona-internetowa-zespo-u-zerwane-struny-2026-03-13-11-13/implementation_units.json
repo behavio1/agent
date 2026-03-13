@@ -1,0 +1,96 @@
+[
+  {
+    "id": "unit-1",
+    "title": "Project Scaffold & Database Schema Setup",
+    "summary": "Initialize Next.js App Router project, install Drizzle ORM, Neon Postgres client, and shadcn/ui. Define the database schema for `gigs` and `messages` tables with the deterministic table prefix (`zerwane_`).",
+    "acceptanceCriteria": [
+      "Next.js project is successfully initialized with Tailwind CSS.",
+      "Drizzle ORM is installed and connected to Neon Postgres via `DATABASE_URI`.",
+      "Schema definitions for `gigs` and `messages` exist in `db/schema/`.",
+      "Database tables use the prefix logic via `db/utils.ts` and `DATABASE_TABLE_PREFIX` environment variable."
+    ],
+    "dependencies": [],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "unit-2",
+    "title": "Global Styling & Layout Components",
+    "summary": "Configure Tailwind CSS with a heavy metal-inspired dark theme (blacks, high contrast, aggressive typography). Implement the `Header` (with smooth scrolling links) and `Footer` layout components.",
+    "acceptanceCriteria": [
+      "Tailwind configuration defines the heavy metal color palette and typography.",
+      "`app/layout.tsx` applies the global dark theme.",
+      "A sticky `Header` component exists with navigation links (Hero, About, Gallery, Media, Gigs, Contact) that support smooth scrolling.",
+      "A `Footer` component exists with placeholder social media links."
+    ],
+    "dependencies": [
+      "unit-1"
+    ],
+    "estimatedComplexity": "low"
+  },
+  {
+    "id": "unit-3",
+    "title": "Static Sections Implementation",
+    "summary": "Build the `Hero`, `About`, `Gallery`, and `Media` components using placeholder imagery, aggressive styling, and YouTube/Spotify iframe embeds.",
+    "acceptanceCriteria": [
+      "`Hero` component displays the band name ('Zerwane Struny') and a tagline over an atmospheric placeholder background.",
+      "`About` component displays band history and identity.",
+      "`Gallery` component renders a responsive CSS grid of live performance placeholder photos.",
+      "`Media` component successfully embeds functional Spotify and YouTube iframes.",
+      "All sections are responsive on mobile and desktop."
+    ],
+    "dependencies": [
+      "unit-2"
+    ],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "unit-4",
+    "title": "Upcoming Gigs Dynamic Section",
+    "summary": "Implement the `Gigs` Server Component. Fetch upcoming concerts from the `gigs` table via Drizzle ORM and render them. Add a seed script to populate test data.",
+    "acceptanceCriteria": [
+      "A Drizzle query fetches records from the `gigs` table.",
+      "The `Gigs` component successfully renders the list of concerts.",
+      "A small seed script or utility is available to insert dummy gigs for testing.",
+      "Component displays correctly on all screen sizes."
+    ],
+    "dependencies": [
+      "unit-1",
+      "unit-2"
+    ],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "unit-5",
+    "title": "Contact Form & Server Action",
+    "summary": "Implement the `Contact` section with a user-facing form. Create a Next.js Server Action to validate input and securely insert the message into the `messages` table.",
+    "acceptanceCriteria": [
+      "A responsive contact form exists with Name, Email, and Message fields.",
+      "Form submission triggers a React Server Action.",
+      "The Server Action inserts a new record into the `messages` database table using Drizzle.",
+      "Success and error feedback states are handled via React `useActionState` (or similar standard hook)."
+    ],
+    "dependencies": [
+      "unit-1",
+      "unit-2"
+    ],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "unit-6",
+    "title": "Final Assembly & Deployment Wiring",
+    "summary": "Assemble all sections into `app/page.tsx`. Verify heavy metal aesthetics, mobile responsiveness, and smooth scrolling. Ensure deployment configuration for Vercel is complete.",
+    "acceptanceCriteria": [
+      "`app/page.tsx` sequentially renders `Hero`, `About`, `Gallery`, `Media`, `Gigs`, and `Contact`.",
+      "Smooth scrolling between sections functions correctly.",
+      "No horizontal overflow exists on mobile devices.",
+      "`package.json` scripts (`build`, `lint`) execute without errors.",
+      "Environment variables (`DATABASE_URI`, `DATABASE_TABLE_PREFIX`) are correctly documented for Vercel deployment."
+    ],
+    "dependencies": [
+      "unit-3",
+      "unit-4",
+      "unit-5"
+    ],
+    "estimatedComplexity": "low"
+  }
+]
