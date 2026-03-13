@@ -1,0 +1,13 @@
+{
+  "unit_id": "unit-5",
+  "changed_files": [
+    "app/page.tsx",
+    "app/actions/contact.ts",
+    "components/sections/contact.tsx",
+    "components/ui/input.tsx",
+    "components/ui/textarea.tsx",
+    "components/ui/label.tsx"
+  ],
+  "acceptance_criteria_checked": true,
+  "notes": "Implemented Contact section with a user-facing form. Created a Next.js Server Action with Zod validation to securely insert the message into the messages table using Drizzle. Feedback states are managed using React 19 useActionState."
+}
