@@ -7,7 +7,7 @@ import { Contact } from "@/components/sections/contact";
 
 export default function Home() {
   return (
-    <div className="w-full">
+    <div className="w-full flex flex-col">
       {/* Static Sections */}
       <Hero />
       <About />

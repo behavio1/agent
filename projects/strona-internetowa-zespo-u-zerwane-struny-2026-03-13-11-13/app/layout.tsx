@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="pl" className="dark scroll-smooth">
       <body
-        className={`${inter.variable} ${oswald.variable} font-sans antialiased bg-background text-foreground min-h-screen flex flex-col`}
+        className={`${inter.variable} ${oswald.variable} font-sans antialiased bg-background text-foreground min-h-screen flex flex-col overflow-x-hidden`}
       >
         <Header />
         <main className="flex-grow">{children}</main>

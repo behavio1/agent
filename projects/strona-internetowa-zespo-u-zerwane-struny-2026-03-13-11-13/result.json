@@ -1,13 +1,16 @@
 {
-  "unit_id": "unit-5",
+  "unit_id": "unit-6",
   "changed_files": [
+    "app/layout.tsx",
     "app/page.tsx",
-    "app/actions/contact.ts",
-    "components/sections/contact.tsx",
-    "components/ui/input.tsx",
-    "components/ui/textarea.tsx",
-    "components/ui/label.tsx"
+    "README.md"
   ],
-  "acceptance_criteria_checked": true,
-  "notes": "Implemented Contact section with a user-facing form. Created a Next.js Server Action with Zod validation to securely insert the message into the messages table using Drizzle. Feedback states are managed using React 19 useActionState."
+  "acceptance_criteria_checked": [
+    "`app/page.tsx` sequentially renders `Hero`, `About`, `Gallery`, `Media`, `Gigs`, and `Contact`.",
+    "Smooth scrolling between sections functions correctly.",
+    "No horizontal overflow exists on mobile devices.",
+    "`package.json` scripts (`build`, `lint`) execute without errors.",
+    "Environment variables (`DATABASE_URI`, `DATABASE_TABLE_PREFIX`) are correctly documented for Vercel deployment."
+  ],
+  "notes": "Assembled Hero, About, Gallery, Media, Gigs, and Contact components into app/page.tsx sequentially. Added scroll-smooth to HTML and overflow-x-hidden to body in app/layout.tsx for smooth scrolling and mobile responsiveness without horizontal scroll issues. Verified build and lint checks pass. Documented Vercel required environment variables in README.md."
 }
