@@ -1,0 +1,72 @@
+[
+  {
+    "id": "foundation-setup",
+    "title": "Setup Foundation and Configuration",
+    "summary": "Initialize project foundation including Polish language configuration, playful fonts, colorful Tailwind theme, and installation of required dependencies like framer-motion and lucide-react.",
+    "acceptanceCriteria": [
+      "app/layout.tsx has lang=\"pl\" and uses a playful Google Font (e.g., Balsamiq Sans or Nunito).",
+      "tailwind.config.ts and app/globals.css are updated with bright, high-contrast colors.",
+      "framer-motion and lucide-react dependencies are installed and configured."
+    ],
+    "dependencies": [],
+    "estimatedComplexity": "low"
+  },
+  {
+    "id": "database-setup",
+    "title": "Database Schema and Server Actions",
+    "summary": "Create the database schema using Drizzle ORM to track global interactions, and implement Next.js Server Actions to fetch and update these stats.",
+    "acceptanceCriteria": [
+      "lib/db/schema.ts includes an `interactions` table utilizing the `DATABASE_TABLE_PREFIX` environment variable.",
+      "app/actions.ts exports `incrementInteraction` and `getInteractionStats` Server Actions.",
+      "Drizzle migrations are correctly generated."
+    ],
+    "dependencies": [
+      "foundation-setup"
+    ],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "core-interactive-components",
+    "title": "Core Interactive Components (Hero and Objects)",
+    "summary": "Develop the animated Reksio hero component and reusable interactive background objects using Framer Motion.",
+    "acceptanceCriteria": [
+      "components/HeroReksio.tsx is created with hover and tap animations using framer-motion.",
+      "components/InteractiveObject.tsx is created as a reusable animated component.",
+      "All interactive elements use large touch targets (min 48x48px) suitable for children on touch devices."
+    ],
+    "dependencies": [
+      "foundation-setup"
+    ],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "mini-game-construction",
+    "title": "Mini-Game Implementation",
+    "summary": "Build the \"Znajdź kości\" (Find the bones) interactive mini-game and integrate it with the server actions to track global score.",
+    "acceptanceCriteria": [
+      "components/MiniGame.tsx is implemented with local React state to track found items.",
+      "Completing the mini-game successfully triggers the `incrementInteraction` Server Action.",
+      "components/GlobalScore.tsx is implemented as a Server Component to display the global interaction stats fetched from the database."
+    ],
+    "dependencies": [
+      "database-setup",
+      "core-interactive-components"
+    ],
+    "estimatedComplexity": "high"
+  },
+  {
+    "id": "page-assembly-and-refinement",
+    "title": "Page Assembly and Refinement",
+    "summary": "Assemble all components onto the main page, ensure responsive design, and perform final polish for animations and Vercel deployment readiness.",
+    "acceptanceCriteria": [
+      "app/page.tsx integrates HeroReksio, MiniGame, and GlobalScore into a cohesive layout.",
+      "The layout is fully responsive and optimized for both mobile touchscreens and desktop mouse interactions.",
+      "The application builds successfully without errors (`next build`).",
+      "No hardcoded database connection strings, deployment paths, or secrets are present in the source code."
+    ],
+    "dependencies": [
+      "mini-game-construction"
+    ],
+    "estimatedComplexity": "medium"
+  }
+]
