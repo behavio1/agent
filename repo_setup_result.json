@@ -1,3 +1,5 @@
 {
-  "output": "repo_setup_result.json"
+  "status": "success",
+  "project_path": "projects/strona-internetowa-zespo-u-zerwane-struny-2026-03-13-11-13",
+  "summary": "Scaffolded Next.js app with shadcn/ui, Drizzle ORM, Neon Postgres support, and database prefixing."
 }
