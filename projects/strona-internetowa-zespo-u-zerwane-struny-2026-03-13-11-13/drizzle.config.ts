@@ -12,4 +12,5 @@ export default defineConfig({
     url: process.env.DATABASE_URI || process.env.DATABASE_URL || '',
   },
   tablesFilter: [`${process.env.DATABASE_TABLE_PREFIX || 'zerwane_'}*`],
+  extensionsFilters: ['postgis'],
 });

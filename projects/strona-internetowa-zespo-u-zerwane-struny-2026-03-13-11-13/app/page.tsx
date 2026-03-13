@@ -2,6 +2,7 @@ import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
 import { Gallery } from "@/components/sections/gallery";
 import { Media } from "@/components/sections/media";
+import { Gigs } from "@/components/sections/gigs";
 
 export default function Home() {
   return (
@@ -12,10 +13,8 @@ export default function Home() {
       <Gallery />
       <Media />
 
-      {/* Dynamic Sections (Placeholders) */}
-      <section id="gigs" className="min-h-screen flex items-center justify-center border-b border-border/40">
-        <h2 className="text-4xl font-heading uppercase text-foreground">Koncerty</h2>
-      </section>
+      {/* Dynamic Sections */}
+      <Gigs />
 
       <section id="contact" className="min-h-screen flex items-center justify-center border-b border-border/40 bg-secondary/20">
         <h2 className="text-4xl font-heading uppercase text-foreground">Kontakt</h2>
