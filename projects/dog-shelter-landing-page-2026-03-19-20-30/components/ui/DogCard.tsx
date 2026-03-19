@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./card";
 import { buttonVariants } from "./button";
 import { PawPrint } from "lucide-react";
@@ -17,7 +18,13 @@ export function DogCard({ id, name, breed, age, description, imageUrl }: DogCard
     <Card className="flex flex-col h-full overflow-hidden border border-border shadow-sm hover:shadow-md transition-shadow">
       <div className="relative aspect-[4/3] bg-muted flex items-center justify-center overflow-hidden">
         {imageUrl ? (
-          <img src={imageUrl} alt={`Zdjęcie psa ${name}`} className="object-cover w-full h-full" />
+          <Image 
+            src={imageUrl} 
+            alt={`Zdjęcie psa ${name}`} 
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover" 
+          />
         ) : (
           <div className="flex flex-col items-center justify-center text-muted-foreground">
             <PawPrint className="w-12 h-12 mb-2 opacity-50" />
@@ -44,7 +51,7 @@ export function DogCard({ id, name, breed, age, description, imageUrl }: DogCard
         </p>
       </CardContent>
       <CardFooter>
-        <a href={`#kontakt?dog=${id}`} className={`w-full ${buttonVariants({ variant: "outline" })}`}>
+        <a href={`/?dog=${id}#contact`} className={`w-full ${buttonVariants({ variant: "outline" })}`}>
           Zapytaj o mnie
         </a>
       </CardFooter>

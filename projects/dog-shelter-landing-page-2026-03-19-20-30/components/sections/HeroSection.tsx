@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import { Heart, PawPrint } from "lucide-react";
 
@@ -35,11 +36,13 @@ export function HeroSection() {
               <PawPrint className="w-32 h-32 text-primary/40" />
             </div>
             {/* When actual images are added, an img tag would go here */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img 
+            <Image 
               src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=2000&auto=format&fit=crop" 
-              alt="Szczęśliwy pies" 
-              className="absolute inset-0 w-full h-full object-cover z-10 opacity-90 hover:opacity-100 transition-opacity duration-500"
+              alt="Szczęśliwy pies"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover z-10 opacity-90 hover:opacity-100 transition-opacity duration-500"
+              priority
             />
           </div>
         </div>

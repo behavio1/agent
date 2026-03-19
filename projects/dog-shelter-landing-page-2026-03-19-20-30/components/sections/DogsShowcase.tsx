@@ -28,7 +28,7 @@ export async function DogsShowcase() {
   }
 
   return (
-    <section id="psy" className="py-24 bg-muted/30">
+    <section id="dogs" className="py-24 bg-muted/30">
       <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col items-center text-center space-y-4 mb-12">
           <PawPrint className="h-10 w-10 text-primary mb-2" />

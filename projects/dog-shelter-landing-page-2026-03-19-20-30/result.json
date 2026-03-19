@@ -1,12 +1,14 @@
 {
-  "unit_id": "dogs-showcase",
+  "unit_id": "refinement-deployment",
   "changed_files": [
+    "next.config.ts",
     "app/page.tsx",
+    "db/index.ts",
     "components/sections/DogsShowcase.tsx",
+    "components/sections/ContactSection.tsx",
+    "components/sections/HeroSection.tsx",
     "components/ui/DogCard.tsx"
   ],
-  "acceptance_criteria_checked": [
-    "Implemented as described: Build the data-driven section that queries the database for non-adopted dogs and displays them in reusable cards."
-  ],
-  "notes": "Added the dynamic section showcasing dogs awaiting adoption fetched securely from DB with fallback gracefully rendering if there's no DB connection."
+  "acceptance_criteria_checked": true,
+  "notes": "Performed final visual and functional testing. Fixed ID anchors to correctly correspond across headers, showcase, and dog cards. Implemented query-parameter-based prefill for Contact Section dog ID. Enabled Next Image remotePatterns and migrated images. Made sure db init degrades gracefully when no database is present. Passes lint, typecheck, and build."
 }
