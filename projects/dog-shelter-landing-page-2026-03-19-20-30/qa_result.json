@@ -1,0 +1,19 @@
+{
+  "lint": {
+    "status": "pass",
+    "output": "\n> dog-shelter-landing-page-2026-03-19-20-30@0.1.0 lint\n> eslint\n\nnpm notice\nnpm notice New major version of npm available! 10.8.2 -> 11.12.0\nnpm notice Changelog: https://github.com/npm/cli/releases/tag/v11.12.0\nnpm notice To update run: npm install -g npm@11.12.0\nnpm notice\n"
+  },
+  "typecheck": {
+    "status": "skip",
+    "output": "No typecheck script found"
+  },
+  "build": {
+    "status": "pass",
+    "output": "\n> dog-shelter-landing-page-2026-03-19-20-30@0.1.0 build\n> next build\n\n▲ Next.js 16.2.0 (Turbopack)\n\n  Creating an optimized production build ...\n✓ Compiled successfully in 11.2s\n  Running TypeScript ...\n  Finished TypeScript in 11.6s ...\n  Collecting page data using 3 workers ...\n  Generating static pages using 3 workers (0/4) ...\n  Generating static pages using 3 workers (1/4) \n  Generating static pages using 3 workers (2/4) \n  Generating static pages using 3 workers (3/4) \n✓ Generating static pages using 3 workers (4/4) in 535ms\n  Finalizing page optimization ...\n\nRoute (app)\n┌ ○ /\n└ ○ /_not-found\n\n\n○  (Static)  prerendered as static content\n"
+  },
+  "all_passed": true,
+  "checks_skipped": [
+    "typecheck"
+  ],
+  "package_manager": "npm"
+}
