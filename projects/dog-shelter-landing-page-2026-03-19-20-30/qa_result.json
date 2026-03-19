@@ -1,6 +1,6 @@
 {
   "lint": {
-    "status": "passed",
+    "status": "pass",
     "output": "> dog-shelter-landing-page-2026-03-19-20-30@0.1.0 lint\n> eslint\n\n/repos/behavio1__agent/projects/dog-shelter-landing-page-2026-03-19-20-30/components/ui/DogCard.tsx\n  20:11  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element\n\n✖ 1 problem (0 errors, 1 warning)"
   },
   "typecheck": {
@@ -8,12 +8,10 @@
     "output": "No typecheck script found in package.json"
   },
   "build": {
-    "status": "passed",
-    "output": "> dog-shelter-landing-page-2026-03-19-20-30@0.1.0 build\n> next build\n\n▲ Next.js 16.2.0 (Turbopack)\n\n  Creating an optimized production build ...\n✓ Compiled successfully in 12.7s\n  Running TypeScript ...\n  Finished TypeScript in 12.1s ...\n  Collecting page data using 3 workers ...\n  Generating static pages using 3 workers (4/4) in 551ms\n  Finalizing page optimization ..."
+    "status": "pass",
+    "output": "> dog-shelter-landing-page-2026-03-19-20-30@0.1.0 build\n> next build\n\n▲ Next.js 16.2.0 (Turbopack)\n\n  Creating an optimized production build ...\n✓ Compiled successfully in 17.0s\n  Running TypeScript ...\n  Finished TypeScript in 12.3s ...\n  Generating static pages using 3 workers (4/4) in 618ms\n  Finalizing page optimization ...\n\nRoute (app)\n┌ ƒ /\n└ ○ /_not-found\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
   },
   "all_passed": true,
-  "checks_skipped": [
-    "typecheck"
-  ],
+  "checks_skipped": ["typecheck"],
   "package_manager": "npm"
 }
