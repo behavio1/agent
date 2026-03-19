@@ -1,0 +1,50 @@
+[
+  {
+    "id": "setup-schema",
+    "title": "Project Setup and Database Schema",
+    "summary": "Create the Next.js scaffold in the project path. Install Tailwind CSS v4, Lucide React, and initial shadcn/ui components. Configure Neon Postgres with Drizzle ORM, defining dog_shelter_dogs and dog_shelter_inquiries tables. Create a database seed script.",
+    "acceptanceCriteria": "- Next.js 16 app exists at `projects/dog-shelter-landing-page-2026-03-19-20-30`.\n- Drizzle configured with table prefix `dog_shelter_`.\n- `db/schema.ts` contains `dogs` and `inquiries` tables.\n- `db/index.ts` connects to Neon via `DATABASE_URI`.\n- `seed.ts` is functional and inserts dummy data.\n- Project builds and runs locally.",
+    "dependencies": [],
+    "estimatedComplexity": "high"
+  },
+  {
+    "id": "layout-components",
+    "title": "Core Layout Component Implementation",
+    "summary": "Build the foundational shell of the landing page. Create a sticky navigation header with anchor links and a footer with shelter contact details.",
+    "acceptanceCriteria": "- `app/layout.tsx` integrates the new Header and Footer components.\n- `Header.tsx` is sticky and contains navigation links (O nas, Nasi podopieczni, Adopcja, Wsparcie, Kontakt).\n- `Footer.tsx` contains shelter contact details, NIP/KRS info, and social links.\n- Components are fully responsive using Tailwind CSS.",
+    "dependencies": ["setup-schema"],
+    "estimatedComplexity": "low"
+  },
+  {
+    "id": "static-sections",
+    "title": "Static Informational Sections Implementation",
+    "summary": "Implement the static sections of the landing page to provide information to users about the shelter and how they can help.",
+    "acceptanceCriteria": "- `HeroSection.tsx` includes an above-the-fold banner with primary CTAs.\n- `AboutSection.tsx` includes mission statement and shelter overview.\n- `AdoptionProcess.tsx` explains the step-by-step adoption procedure.\n- `SupportSection.tsx` provides donation info (bank transfers, 1% tax, volunteering).\n- All sections are integrated into `app/page.tsx` and linked to via the Header.",
+    "dependencies": ["layout-components"],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "dogs-showcase",
+    "title": "Dogs Showcase Implementation",
+    "summary": "Build the data-driven section that queries the database for non-adopted dogs and displays them in reusable cards.",
+    "acceptanceCriteria": "- `DogsShowcase.tsx` Server Component fetches dogs where `is_adopted = false` using Drizzle.\n- `DogCard.tsx` component displays individual dog details (name, breed, age, description, image).\n- Missing images handle graceful fallbacks.\n- Section is integrated into `app/page.tsx`.",
+    "dependencies": ["setup-schema", "static-sections"],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "contact-form",
+    "title": "Contact Form and Server Action Implementation",
+    "summary": "Build the client-side contact form with validation, and wire it to a Next.js Server Action to persist inquiries into the database.",
+    "acceptanceCriteria": "- `ContactForm.tsx` uses `react-hook-form` and Zod for client-side validation.\n- `app/actions/inquiry.ts` validates data and inserts it into `dog_shelter_inquiries`.\n- Form includes error states and success messages.\n- Form integrated into the page.",
+    "dependencies": ["setup-schema", "static-sections"],
+    "estimatedComplexity": "medium"
+  },
+  {
+    "id": "refinement-deployment",
+    "title": "Refinement, Accessibility, and Deployment Configuration",
+    "summary": "Perform final visual and functional testing, fix any layout bugs, ensure accessibility, and verify deployment configuration.",
+    "acceptanceCriteria": "- Semantic HTML and ARIA labels are properly set.\n- Responsive design works seamlessly across mobile, tablet, and desktop.\n- Environment variables documented in `.env.example`.\n- Next.js build and Drizzle migrations configured for deployment target.",
+    "dependencies": ["dogs-showcase", "contact-form"],
+    "estimatedComplexity": "low"
+  }
+]
