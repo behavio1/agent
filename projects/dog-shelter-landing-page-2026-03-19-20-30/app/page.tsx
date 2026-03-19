@@ -1,10 +1,17 @@
+import { HeroSection } from "@/components/sections/HeroSection";
+import { AboutSection } from "@/components/sections/AboutSection";
+import { AdoptionProcess } from "@/components/sections/AdoptionProcess";
+import { SupportSection } from "@/components/sections/SupportSection";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <h1 className="text-4xl font-bold">Dog Shelter Landing Page</h1>
-        <p className="mt-4 text-xl">Find your new best friend.</p>
-      </div>
+    <main className="flex min-h-screen flex-col w-full">
+      <HeroSection />
+      <AboutSection />
+      {/* <DogsShowcase /> will go here */}
+      <AdoptionProcess />
+      <SupportSection />
+      {/* <ContactSection /> will go here */}
     </main>
   );
 }
