@@ -1,0 +1,12 @@
+{
+  "unit_id": "dogs-showcase",
+  "changed_files": [
+    "app/page.tsx",
+    "components/sections/DogsShowcase.tsx",
+    "components/ui/DogCard.tsx"
+  ],
+  "acceptance_criteria_checked": [
+    "Implemented as described: Build the data-driven section that queries the database for non-adopted dogs and displays them in reusable cards."
+  ],
+  "notes": "Added the dynamic section showcasing dogs awaiting adoption fetched securely from DB with fallback gracefully rendering if there's no DB connection."
+}
